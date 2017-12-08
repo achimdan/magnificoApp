@@ -1,2 +1,7 @@
-<button routerLink="/home">Home</button>
-<button routerLink="/products">Products</button>
+<div class="navigation">
+	<div *ngFor="let button of navigation">
+		<button routerLink="/{{button.route}}">
+			{{button.name}}
+		</button>
+	</div>
+</div>
