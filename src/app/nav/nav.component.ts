@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app'
+import { Observable } from 'rxjs/Observable';
 
 @Component({
 	selector: 'app-nav',
@@ -8,8 +11,19 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
 
 	navigation: Array<{}>;
+	user: Observable<firebase.User>;
+	authentificated: boolean = false;
 	
-	constructor() { }
+	constructor(public af: AngularFireAuth) {
+		this.af.authState.subscribe(
+			(auth) => {
+				if (auth != null) {
+					this.user = af.authState;
+					this.authentificated = true;
+				}
+			}
+		)
+	}
 	
 	ngOnInit() {	
 		this.navigation = [
@@ -27,6 +41,16 @@ export class NavComponent implements OnInit {
 				route: 'contact'
 			}
 		];
+	}
+
+	login() {
+		this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+		this.authentificated = true;
+	}
+
+	logout() {
+		this.af.auth.signOut();
+		this.authentificated = false;
 	}
 
 }
