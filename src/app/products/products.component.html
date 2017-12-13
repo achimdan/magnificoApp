@@ -3,16 +3,19 @@
 <product [message]="modelData"></product>
 
 <ul>
-    <li *ngFor="let product of products">
-        {{product.name}}
+    <li *ngFor="let product of products" style="margin-bottom:20px">
+        name: {{product.name}}
         <br>
-        {{product.description}}
+        description: {{product.description}}
         <br>
-        {{product.size}}
+        size: 
+        <span *ngFor="let size of product.size">
+            {{size.number}}
+        </span>
         <br>
-        {{product.time | date: fullDate}}
+        time: {{product.time | date: fullDate}}
         <br>
-        {{product.active}}
+        active: {{product.active}}
     </li>
 </ul>
 

@@ -32,7 +32,7 @@ export class NavComponent implements OnInit {
 				route: 'home'
 			},{
 				id: 2,
-				name: 'Porducts',
+				name: 'Products',
 				route: 'products'
 			},{
 				id: 2,
