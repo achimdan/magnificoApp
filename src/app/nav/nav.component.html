@@ -1,16 +1,13 @@
 <div class="navigation">
 	
 	<div *ngFor="let button of navigation">
-		<button routerLink="/{{button.route}}" *ngIf="authentificated">
+		<button routerLink="/{{button.route}}">
 			{{button.name}}
 		</button>
 	</div>
 	
 	<div style="overflow: hidden;margin: 20px;">
-		<button *ngIf="!authentificated" (click)="login()">
-			Login
-		</button>
-		<button *ngIf="authentificated" (click)="login()">
+		<button  (click)="logout()">
 			Logout
 		</button>
 	</div>

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database'
+
+import { ProductsService } from '../services/products.service'
+import { Product } from '../models/Product';
 
 @Component({
 	selector: 'app-products',
@@ -7,17 +10,19 @@ import { AngularFireDatabase } from 'angularfire2/database'
 	styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-	heroes: any[];
 
-	constructor(db: AngularFireDatabase) {
-		db.list('/heroes')
-			.valueChanges().subscribe(heroes => {
-				this.heroes = heroes;
-				console.log(this.heroes);
-			})
+	products: Product[];	
+
+	constructor(public productsService: ProductsService) {	}
+	
+	ngOnInit() {
+		this.productsService.getProducts().subscribe(products => {
+			console.log(products);
+			this.products = products;
+		})
 	}
 
-	ngOnInit() {
+	ngOnDestroy() {
 	}
 
 }
