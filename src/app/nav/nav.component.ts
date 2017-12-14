@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app'
-import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../services/auth.service';
 
 @Component({
 	selector: 'app-nav',
@@ -12,17 +11,9 @@ import { Observable } from 'rxjs/Observable';
 export class NavComponent implements OnInit {
 
 	navigation: Array<{}>;
-	user: Observable<firebase.User>;
+	user: any;
 	
-	constructor(public af: AngularFireAuth, private router: Router, private route: ActivatedRoute) {
-		this.af.authState.subscribe(
-			(auth) => {
-				if (auth != null) {
-					this.user = af.authState;
-				}
-			}
-		)
-	}
+	constructor(public authService: AuthService, private router: Router) { }
 	
 	ngOnInit() {	
 		this.navigation = [
@@ -42,9 +33,12 @@ export class NavComponent implements OnInit {
 		];
 	}
 
+	update() {
+		this.authService.canRead(this.user);
+	}
+
 	logout() {
-		this.af.auth.signOut();
-		this.router.navigate(['/login']);
+		this.authService.signOut();
 	}
 
 }

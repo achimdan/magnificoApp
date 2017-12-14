@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app'
-import { Observable } from 'rxjs/Observable';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-login',
@@ -12,19 +10,9 @@ import { Observable } from 'rxjs/Observable';
 
 export class LoginComponent implements OnInit {
 
-	user: Observable<firebase.User>;
-	authentificated: boolean = false;
+	constructor (public authService: AuthService, private router: Router) {}
 	
-	constructor(public af: AngularFireAuth, private router: Router, private route: ActivatedRoute) {
-		this.af.authState.subscribe(
-			(auth) => {
-				if (auth != null) {
-					this.user = af.authState;
-					this.authentificated = true;
-				}
-			}
-		)
-	}
+	canEdit;
 	
 	ngOnInit() {	
 		
@@ -32,17 +20,15 @@ export class LoginComponent implements OnInit {
 
 	login(method) {
 		if (method === 'google') {
-			this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then( success => {
-				console.log(success);
-				this.router.navigate(['/home']);
-			});
+			this.authService.googleLogin()
+				.then( success => {
+					this.router.navigate(['/home']);
+				});
 		} else {
-			this.af.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then( success => {
-				console.log(success);
-				this.router.navigate(['/home']);
-			},reason => {
-				console.log(reason);
-			});
+			this.authService.facebookLogin()
+				.then( success => {
+					this.router.navigate(['/home']);
+				});
 		}
 	}
 
