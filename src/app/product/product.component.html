@@ -1,5 +1,18 @@
 <h3>
-  Product
+  {{product.description}}
 </h3>
 
-{{message}}
+<img style="width:100px" src="{{product.img}}" alt="">
+<br>
+name: {{product.name}}
+<br>
+description: {{product.description}}
+<br>
+size: 
+<span *ngFor="let size of product.size">
+    {{size.number}}
+</span>
+<br>
+time: {{product.time | date: fullDate}}
+<br>
+active: {{product.active}}

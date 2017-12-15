@@ -9,7 +9,7 @@ import { Input } from '@angular/core';
 export class ProductComponent implements OnInit {
   modelData: any;
 
-  @Input() message: string;
+  @Input() product: Object;
 
   constructor() { }
 

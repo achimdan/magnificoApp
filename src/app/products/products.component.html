@@ -1,21 +1,9 @@
 <h1>Products</h1>
-<input name="modelData" type="text" [(ngModel)]="modelData">
-<product [message]="modelData"></product>
 
-<ul>
-    <li *ngFor="let product of products" style="margin-bottom:20px">
-        name: {{product.name}}
-        <br>
-        description: {{product.description}}
-        <br>
-        size: 
-        <span *ngFor="let size of product.size">
-            {{size.number}}
-        </span>
-        <br>
-        time: {{product.time | date: fullDate}}
-        <br>
-        active: {{product.active}}
-    </li>
-</ul>
+<input name="modelData" type="text" [(ngModel)]="modelData">
+
+<product *ngFor="let product of products" 
+    style="margin-bottom:20px" 
+    [product]="product">
+</product>
 

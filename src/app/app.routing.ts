@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     { path: 'products', component: ProductsComponent, canActivate: [AuthGuard]},
     { path: 'contact', component: ContactComponent},
 
-    // otherwise redirect to home
+    // otherwise redirect to login
     { path: '', redirectTo: 'login', pathMatch:'full'},
     { path: '**', redirectTo: 'login', pathMatch:'full'}
 ];
