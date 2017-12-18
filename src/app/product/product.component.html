@@ -1,5 +1,22 @@
 <h3>
-  Product
+	{{product.description}}
 </h3>
 
-{{message}}
+<img style="width:400px"
+     src="{{product.img}}"
+     alt="">
+<br> name: {{product.name}}
+<br> price: {{product.price}}
+<br> description: {{product.description}}
+<br> size:
+<span *ngFor="let size of product.size">
+	{{size.number}}
+</span>
+<br> time: {{product.time | date: fullDate}}
+<br> active: {{product.active}}
+<br>
+<button mat-raised-button
+	color="primary"
+	(click)="openDialog()">
+	Pick one
+</button>

@@ -22,6 +22,7 @@ import { ProductsComponent } from './products/products.component';
 import { NavComponent } from './nav/nav.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductComponent } from './product/product.component';
+import { ProductDialog } from './product/product.component';
 import { LoginComponent } from './login/login.component';
 
 //SERVICES
@@ -29,6 +30,15 @@ import { AuthService } from './services/auth.service';
 import { ProductsService } from './services/products.service';
 
 import { AuthGuard } from './guards/auth.guard';
+import { AdminComponent } from './admin/admin.component';
+
+//THIRD PARTY IMPORTS
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatIconModule} from '@angular/material/icon';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
 	declarations: [
@@ -38,7 +48,9 @@ import { AuthGuard } from './guards/auth.guard';
 		NavComponent,
 		ContactComponent,
 		ProductComponent,
-		LoginComponent
+		LoginComponent,
+		AdminComponent,
+		ProductDialog
 	],
 	imports: [
 		BrowserModule,
@@ -47,7 +59,24 @@ import { AuthGuard } from './guards/auth.guard';
 		AngularFirestoreModule,
 		AngularFireAuthModule,
 		FormsModule,
-		routing
+		routing,
+
+		MatDialogModule,
+		MatProgressSpinnerModule,
+		MatButtonModule,
+		MatGridListModule,
+		MatIconModule,
+		BrowserAnimationsModule
+	],
+	exports: [
+		MatDialogModule,
+		MatProgressSpinnerModule,
+		MatGridListModule,
+		MatButtonModule,
+		MatIconModule
+	],
+	entryComponents: [
+		ProductDialog
 	],
 	providers: [
 		AuthService,
