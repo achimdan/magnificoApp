@@ -7,7 +7,8 @@ import { Product } from '../models/Product';
 export class ProductsService {
 
 	productsCollection: AngularFirestoreCollection<Product>;
-	products: Observable<Product[]>
+	products: Observable<Product[]>;
+	postProduct: any;
 
 	constructor(public af: AngularFirestore) {}
 	
@@ -23,6 +24,11 @@ export class ProductsService {
 	getProducts() {
 		this.products = this.af.collection('items').valueChanges();
 		return this.products;
+	}
+
+	addProduct(product) {
+		this.postProduct = this.af.collection('items').add(product);
+		return this.postProduct;
 	}
 
 }

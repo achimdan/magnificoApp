@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database'
+import { AngularFireDatabase } from 'angularfire2/database';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/take';
 
-import { ProductsService } from '../services/products.service'
+import { ProductsService } from '../services/products.service';
 import { Product } from '../models/Product';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as _ from 'lodash';
@@ -16,6 +16,7 @@ import * as _ from 'lodash';
 export class ProductsComponent implements OnInit {
 
 	products: Product[];	
+
 	// products = new BehaviorSubject([]);
 	// batch = 2;
 	// lastKey = '';
