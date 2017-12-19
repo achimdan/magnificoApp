@@ -33,6 +33,11 @@ import { AuthGuard } from './guards/auth.guard';
 import { AdminComponent } from './admin/admin.component';
 
 //THIRD PARTY IMPORTS
+
+//Infinite Scroll
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
+//Material
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonModule} from '@angular/material/button';
@@ -60,6 +65,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 		AngularFireAuthModule,
 		FormsModule,
 		routing,
+
+		InfiniteScrollModule,
 
 		MatDialogModule,
 		MatProgressSpinnerModule,

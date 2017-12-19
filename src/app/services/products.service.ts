@@ -11,6 +11,15 @@ export class ProductsService {
 
 	constructor(public af: AngularFirestore) {}
 	
+	// getProducts(batch, lastKey?) {
+	// 	let query = {
+	// 		orderByKey: true,
+	// 		limitToFirst: batch
+	// 	}
+	// 	if (lastKey) query['startAt'] = lastKey 
+	// 	this.products = this.af.collection('items').valueChanges();
+	// 	return this.products;
+	// }
 	getProducts() {
 		this.products = this.af.collection('items').valueChanges();
 		return this.products;
