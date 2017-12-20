@@ -1,14 +1,38 @@
 <h1>
-  Administration
+	Administration
 </h1>
 
-<input name="name" type="text" [(ngModel)]="name">
-<input name="description" type="text" [(ngModel)]="description">
-<input name="price" type="number" [(ngModel)]="price">
-<input type="checkbox" [(ngModel)]="active">
-{{active}}
+<input name="name"
+       type="text"
+       [(ngModel)]="name">
+<input name="description"
+       type="text"
+       [(ngModel)]="description">
+<input name="price"
+       type="number"
+       [(ngModel)]="price">
+<input type="checkbox"
+       [(ngModel)]="active"> {{active}}
 <button mat-raised-button
-	color="primary"
-	(click)="addProduct()">
+        color="primary"
+        (click)="addProduct()">
 	Add product
+</button>
+<br>
+
+<div *ngIf="currentUpload">
+	<div class="progress">
+		<div class="progress-bar progress-bar-animated"
+			[ngStyle]="{ 'width': currentUpload?.progress + '%' }">
+		</div>
+	</div>
+	Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+</div>
+
+<label>
+	<input type="file" (change)="detectFiles($event)">
+</label>
+<button [disabled]="!selectedFiles"
+	(click)="uploadImage()">
+	Upload Single
 </button>

@@ -28,6 +28,7 @@ import { LoginComponent } from './login/login.component';
 //SERVICES
 import { AuthService } from './services/auth.service';
 import { ProductsService } from './services/products.service';
+import { UploadService } from './services/upload/upload.service';
 
 import { AuthGuard } from './guards/auth.guard';
 import { AdminComponent } from './admin/admin.component';
@@ -59,7 +60,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 	],
 	imports: [
 		BrowserModule,
-		AngularFireModule.initializeApp(environment.firebase, 'magnificoApp'),
+		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireDatabaseModule,
 		AngularFirestoreModule,
 		AngularFireAuthModule,
@@ -88,7 +89,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 	providers: [
 		AuthService,
 		AuthGuard,
-		ProductsService
+		ProductsService,
+		UploadService
 	],
 	bootstrap: [AppComponent]
 })
