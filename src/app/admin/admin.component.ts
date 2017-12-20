@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit {
 			description: this.description,
 			price: this.price,
 			date: new Date(),
-			active: this.active,
+			active: true,
 			img: this.img
 		}
 		this.adminservice.addProduct(prod);
