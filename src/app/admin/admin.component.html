@@ -26,13 +26,19 @@
 <label>
 	<input type="file" (change)="detectFiles($event)">
 </label>
-<button [disabled]="!selectedFiles"
+
+<button mat-raised-button
+	color="primary"
+	[disabled]="!selectedFiles"
 	(click)="uploadImage()">
 	Upload Single
 </button>
 <br>
+<img *ngIf="url" style="width:200px" [src]="url">
+<br>
 <button mat-raised-button
-        color="primary"
-        (click)="addProduct()">
+	color="primary"
+	[disabled]="!selectedFiles"
+	(click)="addProduct()">
 	Add product
 </button>

@@ -50,10 +50,6 @@ export class AdminService {
 		);
 	}
 
-	returnImage() {
-		return this.image;
-	}
-
 	private saveFileData(upload: Upload) {
 		this.db.list(`${this.basePath}/`).push(upload);
 		// this.af.collection('pictures').add(upload.file.name);

@@ -18,6 +18,8 @@ export class AdminComponent implements OnInit {
 	active: boolean;
 	img: any;
 
+	url: string;
+
 	selectedFiles: FileList;
 	currentUpload: Upload;
 
@@ -39,8 +41,18 @@ export class AdminComponent implements OnInit {
 		this.adminservice.addProduct(prod);
 	}
 
-	detectFiles(event) {
+	detectFiles(event: any) {
+		if (event.target.files && event.target.files[0]) {
+			var reader = new FileReader();
+		
+			reader.onload = (event:any) => {
+			  this.url = event.target.result;
+			}
+		
+			reader.readAsDataURL(event.target.files[0]);
+		}
 		this.selectedFiles = event.target.files;
+		console.log(this.selectedFiles);		
 	}
 
 	uploadImage() {
