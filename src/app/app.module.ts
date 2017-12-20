@@ -29,6 +29,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { ProductsService } from './services/products.service';
 import { UploadService } from './services/upload/upload.service';
+import { AdminService } from './admin/admin.service';
 
 import { AuthGuard } from './guards/auth.guard';
 import { AdminComponent } from './admin/admin.component';
@@ -90,7 +91,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 		AuthService,
 		AuthGuard,
 		ProductsService,
-		UploadService
+		UploadService,
+		AdminService
 	],
 	bootstrap: [AppComponent]
 })

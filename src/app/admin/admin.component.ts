@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../services/products.service';
-import { UploadService } from '../services/upload/upload.service';
+import { AdminService } from '../admin/admin.service';
 import { PostProduct } from '../models/post-product';
 import { Upload } from '../services/upload/upload';
 
@@ -21,7 +21,7 @@ export class AdminComponent implements OnInit {
 	selectedFiles: FileList;
 	currentUpload: Upload;
 
-	constructor(private productsService: ProductsService, private Upload: UploadService) { }
+	constructor(private productsService: ProductsService, private adminservice: AdminService) { }
 
 	ngOnInit() {
 
@@ -36,7 +36,7 @@ export class AdminComponent implements OnInit {
 			active: this.active,
 			img: this.img
 		}
-		this.productsService.addProduct(prod);
+		this.adminservice.addProduct(prod);
 	}
 
 	detectFiles(event) {
@@ -46,7 +46,7 @@ export class AdminComponent implements OnInit {
 	uploadImage() {
 		let file = this.selectedFiles.item(0)
 		this.currentUpload = new Upload(file);
-		this.Upload.pushUpload(this.currentUpload);
+		this.adminservice.pushUpload(this.currentUpload);
 	}
 
 }

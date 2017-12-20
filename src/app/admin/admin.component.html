@@ -13,11 +13,7 @@
        [(ngModel)]="price">
 <input type="checkbox"
        [(ngModel)]="active"> {{active}}
-<button mat-raised-button
-        color="primary"
-        (click)="addProduct()">
-	Add product
-</button>
+
 <br>
 
 <div *ngIf="currentUpload">
@@ -35,4 +31,10 @@
 <button [disabled]="!selectedFiles"
 	(click)="uploadImage()">
 	Upload Single
+</button>
+<br>
+<button mat-raised-button
+        color="primary"
+        (click)="addProduct()">
+	Add product
 </button>
