@@ -9,6 +9,7 @@ export class ProductsService {
 	productsCollection: AngularFirestoreCollection<Product>;
 	products: Observable<Product[]>;
 	postProduct: any;
+	removeProduct: any;
 
 	constructor(public af: AngularFirestore) {}
 	
@@ -29,6 +30,11 @@ export class ProductsService {
 	addProduct(product) {
 		this.postProduct = this.af.collection('items').add(product);
 		return this.postProduct;
+	}
+
+	deleteProduct(product) {
+		this.removeProduct = this.af.collection('items').doc(product).delete();
+		return this.removeProduct;
 	}
 
 }

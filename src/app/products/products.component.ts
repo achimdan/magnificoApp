@@ -32,6 +32,11 @@ export class ProductsComponent implements OnInit {
 		})
 	}
 
+	deleteProduct(product) {
+		// console.log(product);
+		this.productsService.deleteProduct(product.name);
+	}
+
 	// onScroll() {
 	// 	console.log('scrolled!!!');
 	// 	this.getProducts();
