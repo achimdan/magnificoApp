@@ -8,6 +8,7 @@ import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 
 import { AdminComponent } from './admin/admin.component';
+import { AddProductComponent } from './admin/add-product/add-product.component';
 
 
 const appRoutes: Routes = [
@@ -15,8 +16,9 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'home', component: HomeComponent},
     { path: 'products', component: ProductsComponent},
-    { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
     { path: 'contact', component: ContactComponent},
+    { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+    { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard]},
 
     // otherwise redirect to login
     { path: '', redirectTo: 'login', pathMatch:'full'},

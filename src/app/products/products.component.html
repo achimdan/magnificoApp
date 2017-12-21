@@ -8,11 +8,6 @@
     <!-- <mat-grid-tile *ngFor="let product of products | async"> -->
     <mat-grid-tile *ngFor="let product of products">
         <product [product]="product"></product>
-        <button mat-mini-fab 
-            color="warn"
-            (click)="deleteProduct(product)">
-            X
-        </button>
     </mat-grid-tile>
 </mat-grid-list>
 

@@ -1,0 +1,82 @@
+<h4 class="app-title">
+	Add product
+</h4>
+<div class="row">
+	<div class="col-md-8">
+		<!-- <form> -->
+			<div class="form-group">
+				<label for="exampleInputEmail1">Name</label>
+				<input type="text"
+					class="form-control"
+					aria-label="name"
+					aria-describedby="basic-addon1"
+					[(ngModel)]="name">
+				<small id="emailHelp"
+					class="form-text text-muted">
+					We'll never share your email with anyone else.
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Price</label>
+				<input type="number"
+					class="form-control"
+					aria-label="price"
+					aria-describedby="basic-addon1"
+					[(ngModel)]="price">
+				<small id="emailHelp"
+					class="form-text text-muted">
+					Product price
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Description</label>
+				<textarea type="text"
+						class="form-control"
+						aria-label="description"
+						aria-describedby="basic-addon1"
+						rows="3"
+						[(ngModel)]="description">
+				</textarea>
+			</div>
+			<div class="form-check">
+				<label class="form-check-label">
+					<input type="checkbox"
+						class="form-check-input">
+						Check me out
+				</label>
+			</div>
+
+			<div *ngIf="currentUpload">
+				<div class="progress">
+					<div class="progress-bar progress-bar-animated"
+						[ngStyle]="{ 'width': currentUpload?.progress + '%' }">
+					</div>
+				</div>
+				Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+			</div>
+
+			<label>
+				<input type="file"(change)="detectFiles($event)">
+			</label>
+
+			<button class="btn btn-primary"
+					[disabled]="!selectedFiles"
+					(click)="uploadImage()">
+				Upload Single
+			</button>
+
+			<br>
+			
+			<button class="btn btn-primary"
+					[disabled]="!selectedFiles"
+					(click)="addProduct()">
+				Add product
+			</button>
+		<!-- </form> -->
+	</div>
+	<div class="col-md-4">
+		<img *ngIf="url"
+			style="width:200px"
+			[src]="url">
+	</div>
+</div>

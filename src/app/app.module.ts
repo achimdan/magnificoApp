@@ -46,6 +46,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ProductsListComponent } from './admin/products-list/products-list.component';
+import { AddProductComponent } from './admin/add-product/add-product.component';
 
 @NgModule({
 	declarations: [
@@ -57,7 +59,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 		ProductComponent,
 		LoginComponent,
 		AdminComponent,
-		ProductDialog
+		ProductDialog,
+		ProductsListComponent,
+		AddProductComponent
 	],
 	imports: [
 		BrowserModule,
