@@ -1,0 +1,26 @@
+.btn {
+    cursor: pointer;
+}
+
+.btn-login {
+    width: 100%;
+}
+
+.btn-facebook {
+    width: 100%;
+    background: #3c66c4;
+    border: #3c66c4;
+    margin-bottom: 1rem;
+}
+.btn-facebook svg {
+    float: left;
+}
+
+.btn-google {
+    width: 100%;
+    background: #dc4e41;
+    border: #dc4e41;
+}
+.btn-google svg {
+    float: left;
+}

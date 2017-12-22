@@ -23,7 +23,7 @@ import { NavComponent } from './nav/nav.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductComponent } from './product/product.component';
 import { ProductDialog } from './product/product.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './admin/login/login.component';
 
 //SERVICES
 import { AuthService } from './services/auth.service';
@@ -89,7 +89,8 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 		MatIconModule
 	],
 	entryComponents: [
-		ProductDialog
+		ProductDialog,
+		LoginComponent
 	],
 	providers: [
 		AuthService,

@@ -1,0 +1,53 @@
+<!-- <h2 mat-dialog-title>Login</h2> -->
+<mat-dialog-content>
+	<div class="login-container">
+		<!-- <form> -->
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email</label>
+				<input type="email"
+					class="form-control"
+					aria-label="email"
+					aria-describedby="basic-addon1"
+					[(ngModel)]="email">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword">Password</label>
+				<input type="password"
+					class="form-control"
+					aria-label="password"
+					aria-describedby="basic-addon1"
+					[(ngModel)]="password">
+				<small id="emailHelp"
+					class="form-text text-muted">
+					We'll never share your password with anyone else.
+				</small>
+			</div>
+
+			<div class="form-check">
+				<label class="form-check-label">
+					<input type="checkbox"
+						class="form-check-input">
+						Remember me
+				</label>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary btn-login"
+						(click)="login('email')">
+					Sign In
+				</button>
+			</div>
+		<!-- </form> -->
+		<div class="social-wrap">
+			<button (click)="login('facebook')"
+				class="btn btn-primary btn-facebook">
+				<i class="fab fa-facebook-square fa-lg"></i>
+				Facebook
+			</button>
+			<button (click)="login('google')"
+				class="btn btn-primary btn-google">
+				<i class="fab fa-google-plus-square fa-lg"></i>
+				Google
+			</button>
+		</div>
+	</div>
+</mat-dialog-content>

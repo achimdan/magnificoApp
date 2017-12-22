@@ -17,16 +17,21 @@ export class AdminComponent implements OnInit {
 	date: number;
 	active: boolean;
 	img: any;
-
 	url: string;
 
 	selectedFiles: FileList;
 	currentUpload: Upload;
 
-	constructor(private productsService: ProductsService, private adminservice: AdminService) { }
+	constructor(private productsService: ProductsService, 
+				private adminservice: AdminService) { }
 
 	ngOnInit() {
-
+		// let timeoutId = setTimeout(() => {  
+		// 	this.loginDialog();
+		// }, 0);
+		// if (localStorage) {
+		// 	console.log(localStorage);
+		// } 
 	}
 
 	addProduct() {
