@@ -34,7 +34,7 @@ import { AdminService } from './admin/admin.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminComponent } from './admin/admin.component';
 
-// import { ServiceWorkerModule } from '@angular/service-worker';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 //THIRD PARTY IMPORTS
 
@@ -73,7 +73,7 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 		AngularFireAuthModule,
 		FormsModule,
 		routing,
-		// environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
+		environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
 
 		InfiniteScrollModule,
 

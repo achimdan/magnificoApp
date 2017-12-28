@@ -5,8 +5,16 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 if (environment.production) {
-  enableProdMode();
+	enableProdMode();
 }
 
+// platformBrowserDynamic().bootstrapModule(AppModule)
+// 	.then(() => {
+// 		if ('serviceWorker' in navigator) {
+// 			navigator.serviceWorker.register('/ngsw-worker.js');
+// 		}
+// 	})
+// 	.catch(err => console.log(err));
+
 platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+	.catch(err => console.log(err));
