@@ -73,7 +73,7 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 		AngularFireAuthModule,
 		FormsModule,
 		routing,
-		environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
+		// environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
 
 		InfiniteScrollModule,
 
