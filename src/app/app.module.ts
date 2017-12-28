@@ -18,11 +18,11 @@ import { FormsModule } from '@angular/forms';
 //COMPONENTS
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ProductsComponent } from './products/products.component';
+import { ProductsComponent } from './home/products/products.component';
 import { NavComponent } from './nav/nav.component';
 import { ContactComponent } from './contact/contact.component';
-import { ProductComponent } from './product/product.component';
-import { ProductDialog } from './product/product.component';
+import { ProductComponent } from './home/product/product.component';
+import { ProductDialog } from './home/product/product.component';
 import { LoginComponent } from './admin/login/login.component';
 
 //SERVICES
@@ -43,13 +43,15 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 //Material
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatButtonModule} from '@angular/material/button';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatIconModule} from '@angular/material/icon';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductsListComponent } from './admin/products-list/products-list.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
 	declarations: [
@@ -82,6 +84,9 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 		MatButtonModule,
 		MatGridListModule,
 		MatIconModule,
+		MatSidenavModule,
+		MatListModule,
+
 		BrowserAnimationsModule
 	],
 	exports: [
@@ -89,7 +94,9 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 		MatProgressSpinnerModule,
 		MatGridListModule,
 		MatButtonModule,
-		MatIconModule
+		MatIconModule,
+		MatSidenavModule,
+		MatListModule
 	],
 	entryComponents: [
 		ProductDialog,

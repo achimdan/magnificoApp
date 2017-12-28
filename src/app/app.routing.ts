@@ -3,7 +3,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 
 import { HomeComponent } from './home/home.component';
-import { ProductsComponent } from './products/products.component';
+import { ProductsComponent } from './home/products/products.component';
 import { ContactComponent } from './contact/contact.component';
 
 import { AdminComponent } from './admin/admin.component';

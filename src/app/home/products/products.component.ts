@@ -3,8 +3,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/take';
 
-import { ProductsService } from '../services/products.service';
-import { Product } from '../models/Product';
+import { ProductsService } from '../../services/products.service';
+import { Product } from '../../models/Product';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as _ from 'lodash';
 

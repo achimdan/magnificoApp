@@ -22,6 +22,8 @@ export class AdminComponent implements OnInit {
 	selectedFiles: FileList;
 	currentUpload: Upload;
 
+	typesOfShoes = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
+
 	constructor(private productsService: ProductsService, 
 				private adminservice: AdminService) { }
 

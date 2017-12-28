@@ -2,16 +2,33 @@
 	Administration
 </h4>
 <br>
-<button class="btn btn-primary" 
-	routerLink="add-product">
-	<i class="fas fa-plus-square"></i>
-	Add product
-</button>
-<button class="btn btn-primary" 
-	routerLink="products-list">
-	<i class="fas fa-plus-square"></i>
-	products-list
-</button>
 
-<router-outlet></router-outlet>
-<!-- <products-list></products-list> -->
+<button type="button" 
+	class="btn btn-primary"
+	(click)="drawer.toggle()">
+	Toggle sidenav
+</button>
+<br>
+<mat-drawer-container class="example-container" autosize>
+	<mat-drawer #drawer class="example-sidenav" mode="side">
+		<ul>
+			<li>
+				<button class="btn btn-primary" 
+					routerLink="add-product">
+					<i class="fas fa-plus-square"></i>
+					Add product
+				</button>
+			</li>
+			<li>
+				<button class="btn btn-primary" 
+					routerLink="products-list">
+					<i class="fas fa-plus-square"></i>
+					products-list
+				</button>
+			</li>
+		</ul>
+	</mat-drawer>
+
+	<router-outlet></router-outlet>
+
+</mat-drawer-container>

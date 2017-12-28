@@ -20,7 +20,7 @@ export class NavComponent implements OnInit {
 			{
 				id: 1,
 				name: 'Home',
-				route: 'home'
+				route: ''
 			},{
 				id: 2,
 				name: 'Products',
