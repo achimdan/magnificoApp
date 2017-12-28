@@ -13,17 +13,19 @@ import { ProductsListComponent } from './admin/products-list/products-list.compo
 
 const appRoutes: Routes = [
     
-    { path: 'home', component: HomeComponent},
-    { path: 'products', component: ProductsComponent},
-    { path: 'contact', component: ContactComponent},
+    // { path: '', redirectTo: 'home' , pathMatch:'full'},
+    { path: '', component: HomeComponent, children: [
+        { path: 'products', component: ProductsComponent},
+        { path: 'contact', component: ContactComponent},
+    ]},
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
         { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard]},
         { path: 'products-list', component: ProductsListComponent, canActivate: [AuthGuard]},
     ]},
 
     // otherwise redirect to login
-    { path: '', redirectTo: 'login', pathMatch:'full'},
-    { path: '**', redirectTo: 'login', pathMatch:'full'}
+    // { path: '', redirectTo: 'login', pathMatch:'full'},
+    // { path: '**', redirectTo: 'login', pathMatch:'full'}
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

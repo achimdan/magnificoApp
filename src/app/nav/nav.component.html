@@ -11,24 +11,24 @@
 
 </div> -->
 <nav class="navbar navbar-light bg-light">
-	<a class="navbar-brand" href="#">
-		<!-- <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+	<a class="navbar-brand" routerLink="/">
+		<img src="/assets/favicons/apple-touch-icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
 		Magnifico
 	</a>
-<ul class="nav nav-pills">
-	<li *ngFor="let button of navigation" 
-		class="nav-item">
-		<a class="nav-link"
-			routerLink="/{{button.route}}">
-			{{button.name}}
-		</a>
-	</li>
-	
-	<li class="nav-item">
-		<a class="nav-link"
-			(click)="logout()">
-		   	Logout
-		</a>
-	</li>
-</ul>
+	<ul class="nav nav-pills">
+		<li *ngFor="let button of navigation" 
+			class="nav-item">
+			<a class="nav-link"
+				routerLink="/{{button.route}}">
+				{{button.name}}
+			</a>
+		</li>
+		
+		<li class="nav-item">
+			<a class="nav-link"
+				(click)="logout()">
+				Logout
+			</a>
+		</li>
+	</ul>
 </nav>
