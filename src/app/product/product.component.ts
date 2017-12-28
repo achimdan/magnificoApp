@@ -9,7 +9,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class ProductComponent implements OnInit {
 
-	@Input() product: Object;
+	@Input() product: any;
 	selected: any;
 
 	constructor(public dialog: MatDialog) { }
@@ -41,5 +41,5 @@ export class ProductDialog {
 	constructor( @Inject(MAT_DIALOG_DATA) public data: any) {
 		console.log(data.product);
 	}
-	product : Object = this.data.product;
+	product : any = this.data.product;
 }
