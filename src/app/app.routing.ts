@@ -19,8 +19,8 @@ const appRoutes: Routes = [
         { path: 'contact', component: ContactComponent},
     ]},
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
-        { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard]},
         { path: 'products-list', component: ProductsListComponent, canActivate: [AuthGuard]},
+        { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard]},
     ]},
 
     // otherwise redirect to login
