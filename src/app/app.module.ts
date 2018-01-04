@@ -23,6 +23,7 @@ import { NavComponent } from './nav/nav.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductComponent } from './home/product/product.component';
 import { ProductDialog } from './home/product/product.component';
+import { AdminProductDialog } from './admin/products-list/products-list.component';
 import { LoginComponent } from './admin/login/login.component';
 
 //SERVICES
@@ -52,6 +53,7 @@ import { ProductsListComponent } from './admin/products-list/products-list.compo
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
 	declarations: [
@@ -64,6 +66,7 @@ import { MatListModule } from '@angular/material/list';
 		LoginComponent,
 		AdminComponent,
 		ProductDialog,
+		AdminProductDialog,
 		ProductsListComponent,
 		AddProductComponent
 	],
@@ -86,6 +89,7 @@ import { MatListModule } from '@angular/material/list';
 		MatIconModule,
 		MatSidenavModule,
 		MatListModule,
+		MatCheckboxModule,
 
 		BrowserAnimationsModule
 	],
@@ -96,10 +100,12 @@ import { MatListModule } from '@angular/material/list';
 		MatButtonModule,
 		MatIconModule,
 		MatSidenavModule,
-		MatListModule
+		MatListModule,
+		MatCheckboxModule
 	],
 	entryComponents: [
 		ProductDialog,
+		AdminProductDialog,
 		LoginComponent
 	],
 	providers: [

@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
+import { Input } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/take';
@@ -8,6 +9,8 @@ import { Product } from '../../models/Product';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as _ from 'lodash';
 
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 @Component({
 	selector: 'products-list',
 	templateUrl: './products-list.component.html',
@@ -15,6 +18,7 @@ import * as _ from 'lodash';
   })
 export class ProductsListComponent implements OnInit {
 
+	@Input() product: any;
 	products: Product[];	
 
 	// products = new BehaviorSubject([]);
@@ -22,7 +26,20 @@ export class ProductsListComponent implements OnInit {
 	// lastKey = '';
 	// finished = false;
 
-	constructor(private productsService: ProductsService) {	}
+	constructor(private productsService: ProductsService, public dialog: MatDialog) {	}
+
+	editProduct(product): void {
+		let dialogRef = this.dialog.open(AdminProductDialog, {
+			width: '650px',
+			data: { product: product }
+		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			console.log('The dialog was closed');
+			// console.log('The dialog was closed', this.product);
+			// this.selected = this.product;
+		});
+	}
 	
 	ngOnInit() {
 		// this.getProducts();
@@ -64,4 +81,15 @@ export class ProductsListComponent implements OnInit {
 	// 		.subscribe();
 	// }
 
+}
+
+@Component({
+	// selector: 'dialog-data-example-dialog',
+	templateUrl: 'admin-product.html',
+})
+export class AdminProductDialog {
+	constructor( @Inject(MAT_DIALOG_DATA) public data: any) {
+		console.log(data.product);
+	}
+	product : any = this.data.product;
 }

@@ -19,8 +19,8 @@
 			{{product.name}}
 		</span>
 		<div>
-			<button class="btn btn-primary" 
-				routerLink="/add-product">
+			<button class="btn btn-primary"
+				(click)="editProduct(product)">
 				<i class="fas fa-edit"></i>
 			</button>
 			<button class="btn btn-danger" 
