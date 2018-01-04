@@ -15,26 +15,20 @@ import { routing } from './app.routing';
 //FORMS
 import { FormsModule } from '@angular/forms';
 
+//MODULES
+import { AdminModule } from './admin/admin.module';
+import { HomeModule } from './home/home.module';
+
 //COMPONENTS
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { ProductsComponent } from './home/products/products.component';
-import { NavComponent } from './nav/nav.component';
-import { ContactComponent } from './contact/contact.component';
-import { ProductComponent } from './home/product/product.component';
-import { ProductDialog } from './home/product/product.component';
-import { AdminProductDialog } from './admin/products-list/products-list.component';
 import { LoginComponent } from './admin/login/login.component';
 
 //SERVICES
 import { AuthService } from './services/auth.service';
 import { ProductsService } from './services/products.service';
 import { UploadService } from './services/upload/upload.service';
-import { AdminService } from './admin/admin.service';
 
 import { AuthGuard } from './guards/auth.guard';
-import { AdminComponent } from './admin/admin.component';
-
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 //THIRD PARTY IMPORTS
@@ -42,36 +36,17 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 //Infinite Scroll
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-//Material
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatButtonModule } from '@angular/material/button';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductsListComponent } from './admin/products-list/products-list.component';
-import { AddProductComponent } from './admin/add-product/add-product.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		HomeComponent,
-		ProductsComponent,
-		NavComponent,
-		ContactComponent,
-		ProductComponent,
 		LoginComponent,
-		AdminComponent,
-		ProductDialog,
-		AdminProductDialog,
-		ProductsListComponent,
-		AddProductComponent
 	],
 	imports: [
 		BrowserModule,
+		AdminModule,
+		HomeModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireDatabaseModule,
 		AngularFirestoreModule,
@@ -82,30 +57,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 		InfiniteScrollModule,
 
-		MatDialogModule,
-		MatProgressSpinnerModule,
-		MatButtonModule,
-		MatGridListModule,
-		MatIconModule,
-		MatSidenavModule,
-		MatListModule,
-		MatCheckboxModule,
-
 		BrowserAnimationsModule
 	],
 	exports: [
-		MatDialogModule,
-		MatProgressSpinnerModule,
-		MatGridListModule,
-		MatButtonModule,
-		MatIconModule,
-		MatSidenavModule,
-		MatListModule,
-		MatCheckboxModule
+
 	],
 	entryComponents: [
-		ProductDialog,
-		AdminProductDialog,
 		LoginComponent
 	],
 	providers: [
@@ -113,7 +70,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 		AuthGuard,
 		ProductsService,
 		UploadService,
-		AdminService
 	],
 	bootstrap: [AppComponent]
 })
