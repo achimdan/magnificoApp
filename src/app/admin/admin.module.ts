@@ -16,7 +16,15 @@ import { AddProductComponent } from './add-product/add-product.component';
 //SERVICES
 import { AdminService } from './admin.service';
 
+// MATERIAL
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+import { SidebarModule } from 'ng-sidebar';
 
 @NgModule({
 	imports: [
@@ -24,7 +32,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 		routing,
 		FormsModule,
 
-		MatProgressSpinnerModule
+		MatSidenavModule,
+		MatProgressSpinnerModule,
+		MatToolbarModule,
+		MatListModule,
+		MatIconModule,
+		MatButtonModule,
+		
+		SidebarModule.forRoot()
 	],
 	declarations: [
 		AdminComponent,
@@ -35,7 +50,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 	exports: [
 		AdminComponent,
 
-		MatProgressSpinnerModule
+		MatSidenavModule,
+		MatProgressSpinnerModule,
+		MatToolbarModule,
+		MatListModule,
+		MatIconModule,
+		MatButtonModule
 	],
 	entryComponents: [
 		AdminProductDialog,

@@ -1,19 +1,97 @@
-<div class="container">
-	<h4>
-		Administration
-	</h4>
-	<br>
-	<button class="btn btn-primary" 
-		routerLink="add-product">
-		<i class="fas fa-plus-square"></i>
-		Add product
-	</button>
-	<button class="btn btn-primary" 
-		routerLink="products-list">
-		<i class="fas fa-plus-square"></i>
-		products-list
-	</button>
-	
-	<router-outlet></router-outlet>
-	<!-- <products-list></products-list> -->
-</div>
+<!-- <mat-sidenav-container
+	class="example-container" 
+	(backdropClick)="close('backdrop')">
+  	<mat-sidenav #sidenav 
+		mode="side">
+		<button mat-button 
+  			style="float:right"
+			(click)="sidenav.toggle()">
+			Open
+		</button>
+		<mat-nav-list>
+			<a mat-list-item routerLink="/">
+				Home
+			</a>
+			<a mat-list-item routerLink="add-product">
+				Add product
+			</a>
+			<a mat-list-item routerLink="products-list">
+				Product list
+			</a>
+		</mat-nav-list>
+  	</mat-sidenav>
+
+	<mat-sidenav-content>
+		<button mat-button 
+			(click)="sidenav.toggle()">
+			Open
+		</button>
+		<div class="container">
+			<h4>
+				Administration
+			</h4>
+			<br>
+		</div>
+		<router-outlet></router-outlet>
+	</mat-sidenav-content>
+</mat-sidenav-container> -->
+
+
+<ng-sidebar-container>
+
+	<!-- A sidebar -->
+	<ng-sidebar 
+		[(opened)]="_opened"
+		[mode]="_MODES[_modeNum]"
+		[keyClose]="_keyClose"
+        [position]="_POSITIONS[_positionNum]"
+        [dock]="_dock"
+        [dockedSize]="'50px'"
+        [autoCollapseHeight]="_autoCollapseHeight"
+        [autoCollapseWidth]="_autoCollapseWidth"
+        [closeOnClickOutside]="_closeOnClickOutside"
+        [closeOnClickBackdrop]="_closeOnClickBackdrop"
+        [showBackdrop]="_showBackdrop"
+        [animate]="_animate"
+        [trapFocus]="_trapFocus"
+        [autoFocus]="_autoFocus"
+        [sidebarClass]="'demo-sidebar'"
+        [ariaLabel]="'My sidebar'"
+        (onOpenStart)="_onOpenStart()"
+        (onOpened)="_onOpened()"
+        (onCloseStart)="_onCloseStart()"
+		(onClosed)="_onClosed()">
+		<div class="admin-menu">
+			<!-- <button (click)="_toggleOpened()" 
+				mat-button color="primary"
+				class="menu-button">
+				<i class="fas fa-bars"></i>
+			</button> -->
+			<button (click)="_toggleOpened()"
+				class="menu-button"
+				mat-icon-button>
+				<i class="fas fa-bars"></i>
+			</button>
+		</div>
+		<mat-nav-list>
+			<a mat-list-item routerLink="/">
+				Home
+				<i class="fas fa-home"></i>
+			</a>
+			<a mat-list-item routerLink="add-product">
+				Add product
+				<i class="fas fa-plus-square"></i>
+			</a>
+			<a mat-list-item routerLink="products-list">
+				Product list
+				<i class="fas fa-th-list"></i>
+			</a>
+		</mat-nav-list>
+	</ng-sidebar>
+
+	<!-- Page content -->
+	<div ng-sidebar-content>
+		<router-outlet></router-outlet>
+	</div>
+
+</ng-sidebar-container>
