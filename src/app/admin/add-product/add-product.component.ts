@@ -4,6 +4,8 @@ import { AdminService } from '../../admin/admin.service';
 import { PostProduct } from '../../models/post-product';
 import { Upload } from '../../services/upload/upload';
 
+import { NotificationsService } from 'angular2-notifications';
+
 @Component({
 	selector: 'add-product',
 	templateUrl: './add-product.component.html',
@@ -23,7 +25,9 @@ export class AddProductComponent implements OnInit {
 	selectedFiles: FileList;
 	currentUpload: Upload;
 
-	constructor(private productsService: ProductsService, private adminService: AdminService) { }
+	constructor(private productsService: ProductsService, 
+				private adminService: AdminService,
+				private notification: NotificationsService) { }
 
 	ngOnInit() {
 
@@ -38,7 +42,11 @@ export class AddProductComponent implements OnInit {
 			active: true,
 			img: this.img
 		}
-		this.adminService.addProduct(prod);
+		this.adminService.addProduct(prod).subscribe( (success) => {
+			console.log('product saved', success);
+			this.successCall();
+		});
+		
 	}
 
 	detectFiles(event: any) {
@@ -59,6 +67,20 @@ export class AddProductComponent implements OnInit {
 		let file = this.selectedFiles.item(0)
 		this.currentUpload = new Upload(file);
 		this.adminService.pushUpload(this.currentUpload);
+	}
+
+	successCall() {
+		this.notification.success(
+			'Some Title',
+			'Some Content',
+			{
+				timeOut: 2000,
+				showProgressBar: true,
+				pauseOnHover: false,
+				clickToClose: false,
+				maxLength: 10
+			}
+		)
 	}
 
 }

@@ -12,6 +12,12 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class AdminComponent implements OnInit {
 
+	public options = {
+		position: ["top", "right"],
+		timeOut: 5000,
+		lastOnBottom: true
+	}
+
 	private _opened: boolean = true;
 	private _modeNum: number = 0;
 	private _positionNum: number = 0;

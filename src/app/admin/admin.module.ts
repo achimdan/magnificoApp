@@ -24,7 +24,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
+//SDIDEBAR
 import { SidebarModule } from 'ng-sidebar';
+
+//NOTIFICATION
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
 	imports: [
@@ -39,7 +43,8 @@ import { SidebarModule } from 'ng-sidebar';
 		MatIconModule,
 		MatButtonModule,
 		
-		SidebarModule.forRoot()
+		SidebarModule.forRoot(),
+		SimpleNotificationsModule.forRoot()
 	],
 	declarations: [
 		AdminComponent,

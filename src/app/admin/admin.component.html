@@ -1,44 +1,8 @@
-<!-- <mat-sidenav-container
-	class="example-container" 
-	(backdropClick)="close('backdrop')">
-  	<mat-sidenav #sidenav 
-		mode="side">
-		<button mat-button 
-  			style="float:right"
-			(click)="sidenav.toggle()">
-			Open
-		</button>
-		<mat-nav-list>
-			<a mat-list-item routerLink="/">
-				Home
-			</a>
-			<a mat-list-item routerLink="add-product">
-				Add product
-			</a>
-			<a mat-list-item routerLink="products-list">
-				Product list
-			</a>
-		</mat-nav-list>
-  	</mat-sidenav>
-
-	<mat-sidenav-content>
-		<button mat-button 
-			(click)="sidenav.toggle()">
-			Open
-		</button>
-		<div class="container">
-			<h4>
-				Administration
-			</h4>
-			<br>
-		</div>
-		<router-outlet></router-outlet>
-	</mat-sidenav-content>
-</mat-sidenav-container> -->
-
+<simple-notifications 
+	[options]="options">
+</simple-notifications>
 
 <ng-sidebar-container>
-
 	<!-- A sidebar -->
 	<ng-sidebar 
 		[(opened)]="_opened"

@@ -18,11 +18,11 @@ export class AdminService {
 	private basePath: string = '/uploads';
 	// uploads: FirebaseListObservable<Upload[]>;
 
-	addProduct(product) {
+	addProduct(product): Observable<any[]> {
 		// console.log(product);
 		product.img = this.image;
 		this.postProduct = this.af.collection('items').add(product);
-		return this.postProduct;
+		return Observable.of(this.postProduct);
 	}
 
 	pushUpload(upload: Upload) {
