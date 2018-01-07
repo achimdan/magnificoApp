@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { ProductsService } from '../services/products.service';
-import { AdminService } from '../admin/admin.service';
+// import { AdminService } from '../admin/admin.service';
+import { AdminService } from '@admin/admin.service';
 import { PostProduct } from '../models/post-product';
 import { Upload } from '../services/upload/upload';
 import { MatSidenav } from '@angular/material/sidenav';
