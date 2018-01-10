@@ -15,7 +15,7 @@ export class NavComponent implements OnInit {
 	
 	constructor(public authService: AuthService, private router: Router) { }
 	
-	ngOnInit() {	
+	ngOnInit() {
 		this.navigation = [
 			{
 				id: 1,
@@ -35,14 +35,6 @@ export class NavComponent implements OnInit {
 				route: 'admin'
 			}
 		];
-	}
-
-	update() {
-		this.authService.canRead(this.user);
-	}
-
-	logout() {
-		this.authService.signOut();
 	}
 
 }

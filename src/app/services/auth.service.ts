@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../models/user';
 
+
 @Injectable()
 export class AuthService {
 
@@ -47,7 +48,7 @@ export class AuthService {
 	signOut() {
 		this.afAuth.auth.signOut()
 			.then( success => {
-				this.router.navigate(['/home']);
+				this.router.navigate(['/']);
 			});
 	}
 	private updateUserData(user) {

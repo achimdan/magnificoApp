@@ -6,6 +6,8 @@ import { PostProduct } from '../models/post-product';
 import { Upload } from '../services/upload/upload';
 import { MatSidenav } from '@angular/material/sidenav';
 
+import { AuthService } from '../services/auth.service';
+
 @Component({
 	selector: 'app-admin',
 	templateUrl: './admin.component.html',
@@ -133,7 +135,8 @@ export class AdminComponent implements OnInit {
 	currentUpload: Upload;
 
 	constructor(private productsService: ProductsService,
-		private adminservice: AdminService) { }
+				private adminservice: AdminService,
+				private authService: AuthService, ) { }
 
 	ngOnInit() {
 		// let timeoutId = setTimeout(() => {  
@@ -174,6 +177,10 @@ export class AdminComponent implements OnInit {
 		let file = this.selectedFiles.item(0)
 		this.currentUpload = new Upload(file);
 		this.adminservice.pushUpload(this.currentUpload);
+	}
+
+	logout() {
+		this.authService.signOut();
 	}
 
 }
