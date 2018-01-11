@@ -24,6 +24,8 @@ const appRoutes: Routes = [
     },
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], 
         children: [
+            { path: '', redirectTo: 'admin', pathMatch:'full' },
+            { path: '', component: LandingPageComponent },
             { path: 'products-list', component: ProductsListComponent, canActivate: [AuthGuard]},
             { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard]},
         ]
