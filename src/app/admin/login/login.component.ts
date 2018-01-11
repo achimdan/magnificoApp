@@ -25,17 +25,18 @@ export class LoginComponent implements OnInit {
 	login(method) {
 		if (method === 'google') {
 			this.authService.googleLogin()
-				.then( success => {
-					this.dialog.closeAll();
+				.then( () => {
+					this.router.navigate(['admin']);
+					// this.dialog.closeAll();
 				});
 		} else if (method === 'facebook') {
 			this.authService.facebookLogin()
-				.then( success => {
+				.then( () => {
 					this.dialog.closeAll();
 				});
 		} else {
 			this.authService.emailLogin(this.email, this.password)
-				.then( success => {
+				.then( () => {
 					this.dialog.closeAll();
 				});
 		}

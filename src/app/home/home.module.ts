@@ -23,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
 	imports: [
@@ -45,6 +46,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 		ContactComponent,
 		ProductComponent,
 		ProductDialog,
+		LandingPageComponent,
 	],
 	exports: [
 		HomeComponent,

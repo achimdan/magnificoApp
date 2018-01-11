@@ -3,6 +3,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 
 import { HomeComponent } from './home/home.component';
+import { LandingPageComponent } from './home/landing-page/landing-page.component'
 import { ProductsComponent } from './home/products/products.component';
 import { ContactComponent } from './contact/contact.component';
 
@@ -13,15 +14,20 @@ import { ProductsListComponent } from './admin/products-list/products-list.compo
 
 const appRoutes: Routes = [
     
-    // { path: '', redirectTo: 'home' , pathMatch:'full'},
-    { path: '', component: HomeComponent, children: [
-        { path: 'products', component: ProductsComponent},
-        { path: 'contact', component: ContactComponent},
-    ]},
-    { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
-        { path: 'products-list', component: ProductsListComponent, canActivate: [AuthGuard]},
-        { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard]},
-    ]},
+    { path: '', component: HomeComponent, 
+        children: [
+            { path: '', redirectTo: 'home', pathMatch:'full'},
+            { path: '', component: LandingPageComponent},
+            { path: 'products', component: ProductsComponent},
+            { path: 'contact', component: ContactComponent},
+        ]
+    },
+    { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], 
+        children: [
+            { path: 'products-list', component: ProductsListComponent, canActivate: [AuthGuard]},
+            { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard]},
+        ]
+    },
 
     // otherwise redirect to login
     // { path: '', redirectTo: 'login', pathMatch:'full'},

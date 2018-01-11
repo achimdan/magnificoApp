@@ -29,10 +29,6 @@ export class NavComponent implements OnInit {
 				id: 2,
 				name: 'Contact',
 				route: 'contact'
-			},{
-				id: 2,
-				name: 'Admin',
-				route: 'admin'
 			}
 		];
 	}
