@@ -10,7 +10,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
 import { ProductDialog } from './product/product.component';
 import { NavComponent } from './nav/nav.component';
-import { ContactComponent } from '../contact/contact.component';
+import { ContactComponent } from '../home/contact/contact.component';
 
 //SERVICES
 

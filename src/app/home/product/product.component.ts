@@ -1,5 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Input } from '@angular/core';
+import { ProductsService } from '../../services/products.service';
+import { AdminService } from '../../admin/admin.service';
+
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
@@ -22,8 +25,6 @@ export class ProductComponent implements OnInit {
 
 		dialogRef.afterClosed().subscribe(result => {
 			console.log('The dialog was closed');
-			// console.log('The dialog was closed', this.product);
-			// this.selected = this.product;
 		});
 	}
 
@@ -38,8 +39,26 @@ export class ProductComponent implements OnInit {
 	templateUrl: 'product.dialog.html',
 })
 export class ProductDialog {
-	constructor( @Inject(MAT_DIALOG_DATA) public data: any) {
-		console.log(data.product);
+	constructor( @Inject(MAT_DIALOG_DATA) public data: any,
+				private productsService: ProductsService, 
+				private adminService: AdminService) { }
+
+	product : object = this.data.product
+
+	addToCart() {
+		console.log(this.product)
+		// let prod = {
+		// 	name: this.name,
+		// 	description: this.description,
+		// 	price: this.price,
+		// 	date: new Date(),
+		// 	active: true,
+		// 	img: this.img
+		// }
+		// this.adminService.addProduct(prod).subscribe( (success) => {
+		// 	console.log('product saved', success);
+		// 	this.successCall();
+		// });
 	}
-	product : any = this.data.product;
+
 }

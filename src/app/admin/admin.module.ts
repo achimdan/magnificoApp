@@ -29,6 +29,7 @@ import { SidebarModule } from 'ng-sidebar';
 
 //NOTIFICATION
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
 	imports: [
@@ -50,7 +51,8 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 		AdminComponent,
 		AdminProductDialog,
 		ProductsListComponent,
-		AddProductComponent
+		AddProductComponent,
+		OrdersComponent
 	],
 	exports: [
 		AdminComponent,

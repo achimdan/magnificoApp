@@ -1,6 +1,6 @@
 {
+    "name": "Magnifico Starter App",
     "short_name": "Magnifico",
-    "name": "Angular5 + Magnifico Firebase Starter App",
     "start_url": "/",
     "theme_color": "#ff0000",
     "background_color": "#ffffff",

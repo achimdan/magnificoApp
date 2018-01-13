@@ -5,11 +5,12 @@ import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LandingPageComponent } from './home/landing-page/landing-page.component'
 import { ProductsComponent } from './home/products/products.component';
-import { ContactComponent } from './contact/contact.component';
+import { ContactComponent } from './home/contact/contact.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { ProductsListComponent } from './admin/products-list/products-list.component';
+import { OrdersComponent } from './admin/orders/orders.component'
 
 
 const appRoutes: Routes = [
@@ -26,8 +27,9 @@ const appRoutes: Routes = [
         children: [
             { path: '', redirectTo: 'admin', pathMatch:'full' },
             { path: '', component: LandingPageComponent },
-            { path: 'products-list', component: ProductsListComponent, canActivate: [AuthGuard]},
-            { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard]},
+            { path: 'products-list', component: ProductsListComponent},
+            { path: 'add-product', component: AddProductComponent},
+            { path: 'orders', component: OrdersComponent},
         ]
     },
 
