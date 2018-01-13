@@ -1,0 +1,18 @@
+<p>
+  cart works!
+</p>
+
+<ul>
+	<li *ngFor="let product of cart">
+		<img style="width:60px" src="{{product.img}}" alt="">
+		<span>
+			{{product.name}}
+		</span>
+		<span>
+			{{product.description}}
+		</span>
+		<span>
+			{{product.price}}
+		</span>
+	</li>
+</ul>

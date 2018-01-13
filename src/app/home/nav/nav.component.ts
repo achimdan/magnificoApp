@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../services/auth.service';
-
 @Component({
 	selector: 'app-nav',
 	templateUrl: './nav.component.html',
@@ -10,10 +8,10 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavComponent implements OnInit {
 
-	navigation: Array<{}>;
-	user: any;
-	
-	constructor(public authService: AuthService, private router: Router) { }
+	navigation: Array<{}>
+	user: any
+		
+	constructor(private router: Router) { }
 	
 	ngOnInit() {
 		this.navigation = [

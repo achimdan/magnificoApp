@@ -24,6 +24,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './admin/login/login.component';
 
 //SERVICES
+import { HomeService } from './home/home.service';
 import { AuthService } from './services/auth.service';
 import { ProductsService } from './services/products.service';
 import { UploadService } from './services/upload/upload.service';
@@ -38,10 +39,11 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 @NgModule({
 	declarations: [
 		AppComponent,
-		LoginComponent,
+		LoginComponent
 	],
 	imports: [
 		BrowserModule,
@@ -66,6 +68,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		LoginComponent
 	],
 	providers: [
+		HomeService,
 		AuthService,
 		AuthGuard,
 		ProductsService,

@@ -11,6 +11,8 @@ import { ProductComponent } from './product/product.component';
 import { ProductDialog } from './product/product.component';
 import { NavComponent } from './nav/nav.component';
 import { ContactComponent } from '../home/contact/contact.component';
+import { CartComponent } from './cart/cart.component';
+import { ToCartComponent } from './to-cart/to-cart.component';
 
 //SERVICES
 
@@ -25,6 +27,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
+
 @NgModule({
 	imports: [
 		CommonModule,
@@ -38,6 +41,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 		MatSidenavModule,
 		MatListModule,
 		MatCheckboxModule,
+		
 	],
 	declarations: [
 		HomeComponent,
@@ -47,6 +51,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 		ProductComponent,
 		ProductDialog,
 		LandingPageComponent,
+		CartComponent,
+		ToCartComponent
+		
 	],
 	exports: [
 		HomeComponent,

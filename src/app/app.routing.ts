@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LandingPageComponent } from './home/landing-page/landing-page.component'
 import { ProductsComponent } from './home/products/products.component';
 import { ContactComponent } from './home/contact/contact.component';
+import { CartComponent } from './home/cart/cart.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
             { path: '', component: LandingPageComponent},
             { path: 'products', component: ProductsComponent},
             { path: 'contact', component: ContactComponent},
+            { path: 'cart', component: CartComponent},
         ]
     },
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], 

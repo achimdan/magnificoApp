@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Input } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
+
 import { ProductsService } from '../../services/products.service';
+import { HomeService } from '../home.service';
 import { AdminService } from '../../admin/admin.service';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -12,10 +13,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class ProductComponent implements OnInit {
 
-	@Input() product: any;
-	selected: any;
+	@Input() product: any
+	selected: any
 
-	constructor(public dialog: MatDialog) { }
+	constructor(private homeService: HomeService, public dialog: MatDialog) { }
 
 	openDialog(): void {
 		let dialogRef = this.dialog.open(ProductDialog, {
@@ -29,7 +30,7 @@ export class ProductComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
+		
 	}
 
 }
@@ -40,6 +41,7 @@ export class ProductComponent implements OnInit {
 })
 export class ProductDialog {
 	constructor( @Inject(MAT_DIALOG_DATA) public data: any,
+				private homeService: HomeService,
 				private productsService: ProductsService, 
 				private adminService: AdminService) { }
 
@@ -47,18 +49,8 @@ export class ProductDialog {
 
 	addToCart() {
 		console.log(this.product)
-		// let prod = {
-		// 	name: this.name,
-		// 	description: this.description,
-		// 	price: this.price,
-		// 	date: new Date(),
-		// 	active: true,
-		// 	img: this.img
-		// }
-		// this.adminService.addProduct(prod).subscribe( (success) => {
-		// 	console.log('product saved', success);
-		// 	this.successCall();
-		// });
+		// this.homeService.addOrder('dasdasdas')
+		this.homeService.addOrder(this.product)
 	}
 
 }
