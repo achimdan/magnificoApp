@@ -10,7 +10,6 @@ import { Cart } from '../../models/cart-products';
 })
 export class CartComponent implements OnInit {
 
-	message: string
 	cart: Cart[];	
 
 	constructor(private homeService: HomeService) { }

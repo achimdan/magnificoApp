@@ -23,9 +23,9 @@ export class HomeService {
 		return this.cart;
 	}
 
-	addOrder(message: any) {
-		this.productToCart.next(message)
-		this.order = this.af.collection('orders').add(message);
+	addOrder(product: any) {
+		this.productToCart.next(product)
+		this.order = this.af.collection('orders').add(product);
 	}
 	// addOrder(newOrder): Observable<any[]> {
 	// 	this.order = this.af.collection('orders').add(newOrder);

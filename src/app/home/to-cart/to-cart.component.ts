@@ -9,7 +9,6 @@ import { HomeService } from '../home.service';
 })
 export class ToCartComponent implements OnInit {
 
-	message: string
 	cartLength: number
 
 	constructor(private homeService: HomeService) { }
