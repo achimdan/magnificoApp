@@ -40,6 +40,9 @@ export class ProductComponent implements OnInit {
 	templateUrl: 'product.dialog.html',
 })
 export class ProductDialog {
+
+	cartArray: Array<{}> = []
+
 	constructor( @Inject(MAT_DIALOG_DATA) public data: any,
 				private homeService: HomeService,
 				private productsService: ProductsService, 
@@ -48,9 +51,15 @@ export class ProductDialog {
 	product : object = this.data.product
 
 	addToCart() {
-		console.log(this.product)
-		// this.homeService.addOrder('dasdasdas')
+		this.cartArray.push(this.product)
+		localStorage.setItem('cart', JSON.stringify(this.cartArray));
 		this.homeService.addOrder(this.product)
 	}
+
+	// addToCart() {
+	// 	console.log(this.product)
+	// 	// this.homeService.addOrder('dasdasdas')
+	// 	this.homeService.addOrder(this.product)
+	// }
 
 }

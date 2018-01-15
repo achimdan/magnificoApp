@@ -15,10 +15,10 @@ export class CartComponent implements OnInit {
 	constructor(private homeService: HomeService) { }
 
 	ngOnInit() {
-		this.homeService.getCartProducts().subscribe(cart => {
-			console.log(cart);
-			this.cart = cart;
-		})
+		// this.homeService.getCartProducts().subscribe(cart => {
+		// 	console.log(cart);
+		// 	this.cart = cart;
+		// })
 	}
 
 }
