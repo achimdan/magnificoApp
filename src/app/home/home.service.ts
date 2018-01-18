@@ -12,6 +12,7 @@ export class HomeService {
 
 	order: any;
 	cart: Observable<Cart[]>;
+	cartArray: Array<{}> = []
 
 	user = JSON.parse(localStorage.getItem('cart'))
 
@@ -20,28 +21,26 @@ export class HomeService {
 
 	constructor(private af: AngularFirestore, private db: AngularFireDatabase) { }
 
-	addOrder(product: any) {
-		this.productToCart.next(product);
-		// this.order = this.af.collection('orders').add(product);
-	}
-
-	// private productToCart = new BehaviorSubject<any>('this.cart')
-	// currentProduct = this.productToCart.asObservable()
-
-	// constructor(private af: AngularFirestore, private db: AngularFireDatabase) { }
-
 	// getCartProducts() {
-	// 	this.cart = this.af.collection('orders').valueChanges();
+	// 	this.cart = Observable.of(this.user)
 	// 	return this.cart;
 	// }
 
 	// addOrder(product: any) {
-	// 	this.productToCart.next(product)
-	// 	this.order = this.af.collection('orders').add(product);
+	// 	this.productToCart.next(product);
+	// 	this.cartArray.push(product)
+	// 	localStorage.setItem('cart', JSON.stringify(this.cartArray));
+	// 	// this.order = this.af.collection('orders').add(product);
 	// }
-	// addOrder(newOrder): Observable<any[]> {
-	// 	this.order = this.af.collection('orders').add(newOrder);
-	// 	return Observable.of(this.order);
-	// }
+
+	getCartProducts() {
+		this.cart = this.af.collection('orders').valueChanges();
+		return this.cart;
+	}
+
+	addOrder(product: any) {
+		this.productToCart.next(product)
+		this.order = this.af.collection('orders').add(product);
+	}
 
 }
