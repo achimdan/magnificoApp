@@ -9,14 +9,15 @@ import { HomeService } from '../home.service';
 })
 export class ToCartComponent implements OnInit {
 
-	products: Array<{}>;
+	products: Array<{}>
+	isVisible: boolean = false
 
 	constructor(private homeService: HomeService) { }
 
 	ngOnInit() {
 
 		this.homeService.currentProduct.subscribe(products => {
-			this.products = products.length || 0
+			this.products = products
 		})
 
 		// FOR FIREBASE
@@ -25,6 +26,16 @@ export class ToCartComponent implements OnInit {
 		// 	console.log(cart)
 		// 	// this.product = cart.length || cart
 		// })
+	}
+
+	mouseEnter(div: string) {
+		console.log("mouse enter : " + div)
+		this.isVisible = true
+	}
+	
+	mouseLeave(div: string) {
+		console.log('mouse leave :' + div)
+		this.isVisible = false
 	}
 
 }

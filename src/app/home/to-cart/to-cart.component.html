@@ -1,6 +1,25 @@
-<a routerLink="/cart">
-	<!-- {{product.length}} -->
-	{{products}}
-	My cart
-	<!-- {{message.name}} -->
+<a routerLink="/cart" 
+	class="nav-cart"
+	(mouseenter) ="mouseEnter('div a')"  
+	(mouseleave) ="mouseLeave('div A')">
+
+		<i class="fas fa-shopping-cart"></i>
+		{{products.length || 0}}
+		My cart
+		<div *ngIf="isVisible" class="my-cart">
+			<ul>
+				<li *ngFor="let product of products" style="display:flex">
+					<img style="width:40px;height:40px" src="{{product.img}}" alt="">
+					<span>
+						{{product.name}}
+					</span>
+					<span>
+						{{product.description}}
+					</span>
+					<span>
+						{{product.price}}
+					</span>
+				</li>
+			</ul>
+		</div> 
 </a>
