@@ -9,14 +9,14 @@ import { HomeService } from '../home.service';
 })
 export class ToCartComponent implements OnInit {
 
-	product: Array<{}>;
+	products: Array<{}>;
 
 	constructor(private homeService: HomeService) { }
 
 	ngOnInit() {
 
-		this.homeService.currentProduct.subscribe(message => {
-			this.product = message.length || 0
+		this.homeService.currentProduct.subscribe(products => {
+			this.products = products.length || 0
 		})
 
 		// FOR FIREBASE

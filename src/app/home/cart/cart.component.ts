@@ -10,7 +10,7 @@ import { Cart } from '../../models/cart-products';
 })
 export class CartComponent implements OnInit {
 
-	cart: Cart[];	
+	products: Array<{}>;
 
 	constructor(private homeService: HomeService) { }
 
@@ -19,6 +19,10 @@ export class CartComponent implements OnInit {
 		// 	console.log(cart);
 		// 	this.cart = cart;
 		// })
+
+		this.homeService.currentProduct.subscribe(products => {
+			this.products = products
+		})
 	}
 
 }
