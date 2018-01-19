@@ -9,18 +9,17 @@ import { HomeService } from '../home.service';
 })
 export class ToCartComponent implements OnInit {
 
-	// cartLength: number
-	product: any;
+	product: Array<{}>;
 
 	constructor(private homeService: HomeService) { }
 
 	ngOnInit() {
 
-		// this.homeService.currentProduct.subscribe(message => {this.product = message.length})
 		this.homeService.currentProduct.subscribe(message => {
-			this.product = message.length
-			console.log(message)
+			this.product = message.length || 0
 		})
+
+		// FOR FIREBASE
 
 		// this.homeService.getCartProducts().subscribe(cart => {
 		// 	console.log(cart)

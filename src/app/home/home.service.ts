@@ -10,9 +10,8 @@ import { Cart } from '../models/cart-products';
 @Injectable()
 export class HomeService {
 
-	order: any
 	cart: Observable<Cart[]>
-	cartArray = JSON.parse(localStorage.getItem('cart')) || []
+	cartArray: Array<{}> = JSON.parse(localStorage.getItem('cart')) || []
 
 	user = JSON.parse(localStorage.getItem('cart')) || 0
 
@@ -22,7 +21,6 @@ export class HomeService {
 	constructor(private af: AngularFirestore, private db: AngularFireDatabase) { }
 
 	getCartProducts() {
-		// this.cartArray = JSON.parse(localStorage.getItem('cart')) || []
 		this.cart = Observable.of(this.user)
 		return this.cart
 	}
@@ -33,6 +31,8 @@ export class HomeService {
 		localStorage.setItem('cart', JSON.stringify(this.cartArray))
 	}
 
+	// FOR FIREBASE
+	
 	// getCartProducts() {
 	// 	this.cart = this.af.collection('orders').valueChanges()
 	// 	return this.cart
