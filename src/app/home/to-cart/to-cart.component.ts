@@ -16,11 +16,16 @@ export class ToCartComponent implements OnInit {
 
 	ngOnInit() {
 
-		// this.homeService.currentProduct.subscribe(message => this.product = message.length)
-
-		this.homeService.getCartProducts().subscribe(cart => {
-			this.product = cart.length
+		// this.homeService.currentProduct.subscribe(message => {this.product = message.length})
+		this.homeService.currentProduct.subscribe(message => {
+			this.product = message.length
+			console.log(message)
 		})
+
+		// this.homeService.getCartProducts().subscribe(cart => {
+		// 	console.log(cart)
+		// 	// this.product = cart.length || cart
+		// })
 	}
 
 }
