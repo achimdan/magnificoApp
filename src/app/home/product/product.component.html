@@ -1,10 +1,14 @@
 <h3>
 	{{product.description}}
 </h3>
+<!-- 'background-image':'url({{vm.config.baseDomain + provider.imageUrl}})',
+'background-position':'center',
+'background-size':'cover',
+'background-repeat':'no-repeat' -->
 
-<img style="width:400px;height:400px"
-     src="{{product.img}}"
-     alt="">
+<div class="product-img" 
+	[ngStyle]="{'background-image':'url(' + product.img + ')'}">
+</div>
 <br> name: {{product.name}}
 <br> price: {{product.price}}
 <br> description: {{product.description}}
@@ -16,7 +20,9 @@
 <br> active: {{product.active}}
 <br>
 <button mat-raised-button
+	class="btn-to-cart"
 	color="primary"
 	(click)="openDialog()">
-	Pick one
+	<i class="fas fa-eye"></i>
+	View product
 </button>

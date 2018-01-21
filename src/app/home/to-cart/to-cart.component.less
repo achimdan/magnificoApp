@@ -1,7 +1,35 @@
 .nav-cart {
     position: relative;
     display: block;
+    cursor: pointer;
     .my-cart {
+        background: white;
+        box-shadow: 0 2px 20px 0 rgba(0,0,0,.15);
         position: absolute;
+        z-index: 9;
+        width: 300px;
+        right: -40px;
+        .my-cart-products {
+            display: grid;
+            grid-template-columns: repeat(1, 10fr);
+            grid-auto-rows: auto;
+            grid-gap: 10px;
+            padding: 10px;
+            list-style: none;
+            height: 200px;
+            overflow-y: scroll;
+            li {
+                display: flex;
+                border-bottom: 1px solid lightgrey;
+                padding-bottom: 5px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 39.9375em) {
+    .my-cart {
+        right: initial;
+        left: 0;
     }
 }

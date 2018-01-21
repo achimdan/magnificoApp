@@ -1,14 +1,14 @@
-<a routerLink="/cart" 
-	class="nav-cart"
+<div class="nav-cart"
 	(mouseenter) ="mouseEnter('div a')"  
 	(mouseleave) ="mouseLeave('div A')">
-
+		
 		<i class="fas fa-shopping-cart"></i>
 		{{products.length || 0}}
 		My cart
 		<div *ngIf="isVisible" class="my-cart">
-			<ul>
-				<li *ngFor="let product of products" style="display:flex">
+			<p>Products in cart</p>
+			<ul class="my-cart-products">
+				<li *ngFor="let product of products">
 					<img style="width:40px;height:40px" src="{{product.img}}" alt="">
 					<span>
 						{{product.name}}
@@ -21,5 +21,17 @@
 					</span>
 				</li>
 			</ul>
+			<p>
+				<b>TOTAL: </b>
+				<span>{{products.length || 0}} products</span>
+				
+			</p>
+			<button mat-raised-button
+				class="btn-to-cart"
+				color="primary"
+				routerLink="/cart">
+				<i class="fas fa-eye"></i>
+				View cart
+			</button>
 		</div> 
-</a>
+	</div>

@@ -9,7 +9,7 @@ import { NotificationsService } from 'angular2-notifications';
 @Component({
 	selector: 'add-product',
 	templateUrl: './add-product.component.html',
-	styleUrls: ['./add-product.component.css','../../app.component.css']
+	styleUrls: ['./add-product.component.css','../../app.component.less']
 })
 export class AddProductComponent implements OnInit {
 

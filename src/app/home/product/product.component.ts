@@ -9,7 +9,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
 	selector: 'product',
 	templateUrl: './product.component.html',
-	styleUrls: ['./product.component.css']
+	styleUrls: ['./product.component.less']
 })
 export class ProductComponent implements OnInit {
 
