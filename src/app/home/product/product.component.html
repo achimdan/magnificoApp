@@ -1,28 +1,20 @@
-<h3>
+<p class="product-title">
 	{{product.description}}
-</h3>
-<!-- 'background-image':'url({{vm.config.baseDomain + provider.imageUrl}})',
-'background-position':'center',
-'background-size':'cover',
-'background-repeat':'no-repeat' -->
+</p>
 
 <div class="product-img" 
 	[ngStyle]="{'background-image':'url(' + product.img + ')'}">
 </div>
-<br> name: {{product.name}}
-<br> price: {{product.price}}
-<br> description: {{product.description}}
-<br> size:
-<span *ngFor="let size of product.size">
-	{{size.number}}
-</span>
-<!-- <br> time: {{product.date | date: fullDate}} -->
-<br> active: {{product.active}}
-<br>
-<button mat-raised-button
+<div class="product-price"> 
+	{{product.price}} ron
+</div>
+<div class="product-info"> 
+	{{product.description}}
+</div>
+<button 
 	class="btn-to-cart"
 	color="primary"
 	(click)="openDialog()">
-	<i class="fas fa-eye"></i>
-	View product
+	<!-- <i class="fas fa-eye"></i> -->
+	View
 </button>
