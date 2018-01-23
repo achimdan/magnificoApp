@@ -1,12 +1,15 @@
-<h3 style="padding: 15px">Products</h3>
 
-<mat-progress-spinner mode="indeterminate" style="margin: 60px auto 100px;"
-    *ngIf="!products">
-</mat-progress-spinner>
-<div class="wrapper">
-    <product [product]="product" 
-        *ngFor="let product of products">
-    </product>
+<div class="products-wrapper">
+    <h3 style="padding: 15px">Products</h3>
+    
+    <mat-progress-spinner mode="indeterminate" style="margin: 60px auto 100px;"
+        *ngIf="!products">
+    </mat-progress-spinner>
+    <div class="product-wrapper">
+        <product [product]="product" 
+            *ngFor="let product of products">
+        </product>
+    </div>
 </div>
 
 <!-- <div infiniteScroll
