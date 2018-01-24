@@ -1,3 +1,13 @@
 <h1>
 	{{title}}
 </h1>
+
+<swiper [config]="config" [(index)]="index">
+	<div *ngFor="let product of products">
+		<!-- {{product.name}} -->
+		<!-- <img src="{{product.img}}" style="width:100%"> -->
+		<div class="product-img" 
+			[ngStyle]="{'background-image':'url(' + product.img + ')'}">
+		</div>
+	</div>
+</swiper>

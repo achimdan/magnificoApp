@@ -16,7 +16,7 @@ import { ToCartComponent } from './to-cart/to-cart.component';
 
 //SERVICES
 
-// //Material
+//Material
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,7 +27,18 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
+//SWIPER
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+	direction: 'horizontal',
+	slidesPerView: 'auto',
+	keyboard: true
+};
+
+  
 @NgModule({
 	imports: [
 		CommonModule,
@@ -41,7 +52,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 		MatSidenavModule,
 		MatListModule,
 		MatCheckboxModule,
-		
+
+		SwiperModule
 	],
 	declarations: [
 		HomeComponent,
@@ -75,7 +87,10 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 		ProductDialog
 	],
 	providers: [
-
+		{
+			provide: SWIPER_CONFIG,
+			useValue: DEFAULT_SWIPER_CONFIG
+		}
 	]
 })
 export class HomeModule { }
