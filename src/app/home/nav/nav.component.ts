@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
 	selector: 'app-nav',
 	templateUrl: './nav.component.html',
-	styleUrls: ['./nav.component.less']
+	styleUrls: ['./nav.component.less'],
 })
 export class NavComponent implements OnInit {
 
@@ -31,7 +31,7 @@ export class NavComponent implements OnInit {
 		];
 	}
 
-	navigate(button) {
+	public navigate(button: any) {
 		this.router.navigate([button.route]);
 	}
 
