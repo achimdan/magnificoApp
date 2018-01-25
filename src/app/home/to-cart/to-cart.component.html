@@ -1,9 +1,12 @@
 <div class="nav-cart"
 	(mouseenter) ="mouseEnter('div a')"  
 	(mouseleave) ="mouseLeave('div A')">
-		
-		<i class="fas fa-shopping-cart"></i>
-		{{products.length || 0}}
+		<button type="button" class="btn btn-outline-info">
+			<i class="fas fa-shopping-cart"></i>
+			My cart 
+			<span class="badge badge-light">{{products.length || 0}}</span>
+		</button>
+		<!-- {{products.length || 0}} -->
 		<!-- My cart -->
 		<div *ngIf="isVisible" class="my-cart">
 			<p>Products in cart</p>
