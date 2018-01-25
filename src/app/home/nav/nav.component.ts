@@ -31,4 +31,8 @@ export class NavComponent implements OnInit {
 		];
 	}
 
+	navigate(button) {
+		this.router.navigate([button.route]);
+	}
+
 }
