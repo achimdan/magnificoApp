@@ -10,8 +10,11 @@ export class NavComponent implements OnInit {
 
 	navigation: Array<{}>
 	user: any
+
+	isVisibile:boolean = false
+	isToggle:boolean = false
 		
-	constructor(private router: Router) { }
+	constructor(private router: Router) {}
 	
 	ngOnInit() {
 		this.navigation = [
@@ -29,10 +32,25 @@ export class NavComponent implements OnInit {
 				route: 'contact'
 			}
 		];
+
+		if (window.innerWidth <= 768) this.isVisibile = true
+	}
+
+	onResize(event:any) {
+		if (event.target.innerWidth <= 768) {
+			this.isVisibile = true
+		} else {
+			this.isVisibile = false
+		}
+		console.log(event.target.innerWidth)
+	}
+
+	toggleMenu() {
+		this.isToggle =! this.isToggle
 	}
 
 	public navigate(button: any) {
-		this.router.navigate([button.route]);
+		this.router.navigate([button.route])
 	}
 
 }
