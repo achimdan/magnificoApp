@@ -17,11 +17,23 @@
 	margin: auto;
 	.navbar {
 		padding: 0.5rem 0;
+		.not-collapse {
+			display: none;
+		}
+		.is-collapse {
+			display: block;
+		}
 	}
 	@media screen and (max-width: 768px) {
 		width: 100%;
 		.navbar {
 			padding: 0.5rem 1rem;
+			.not-collapse {
+				display: block;
+			}
+			.is-collapse {
+				display: none;
+			}
 		}
 	}
 }
