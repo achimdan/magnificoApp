@@ -17,9 +17,6 @@
 			float: right;
 		}
 	}
-	.toggled {
-		display: none;
-	}
 }
 
 @media screen and (max-width: 768px) {
@@ -38,9 +35,30 @@
 			}
 		}
 		.toggled {
-			display: block;
+			display: grid;
 		}
     }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+    .nav-bar {
+		grid-template-columns: 30% 70%;
+		width: 100%;
+		padding: 15px;
+		.nav-zone {
+			display: grid;
+			grid-template-columns: 20% 20% 20% auto;
+			list-style-type: none;
+			padding: 0;
+			margin-bottom: 0;
+			.nav-buttons {
+				text-align: center;
+			}
+			to-cart {
+				float: right;
+			}
+		}
+	}
 }
 
 // .nav-wrapper {
