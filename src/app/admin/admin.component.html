@@ -2,72 +2,32 @@
 	[options]="options">
 </simple-notifications>
 
-<ng-sidebar-container>
-	<!-- A sidebar -->
-	<ng-sidebar 
-		[(opened)]="_opened"
-		[mode]="_MODES[_modeNum]"
-		[keyClose]="_keyClose"
-        [position]="_POSITIONS[_positionNum]"
-        [dock]="_dock"
-        [dockedSize]="'50px'"
-        [autoCollapseHeight]="_autoCollapseHeight"
-        [autoCollapseWidth]="_autoCollapseWidth"
-        [closeOnClickOutside]="_closeOnClickOutside"
-        [closeOnClickBackdrop]="_closeOnClickBackdrop"
-        [showBackdrop]="_showBackdrop"
-        [animate]="_animate"
-        [trapFocus]="_trapFocus"
-        [autoFocus]="_autoFocus"
-        [sidebarClass]="'demo-sidebar'"
-        [ariaLabel]="'My sidebar'"
-        (onOpenStart)="_onOpenStart()"
-        (onOpened)="_onOpened()"
-        (onCloseStart)="_onCloseStart()"
-		(onClosed)="_onClosed()">
-		<div class="admin-menu">
-			<!-- <button (click)="_toggleOpened()" 
-				mat-button color="primary"
-				class="menu-button">
-				<i class="fas fa-bars"></i>
-			</button> -->
-			<button (click)="_toggleOpened()"
-				class="menu-button"
-				mat-icon-button>
+<div class="admin-container" 
+	[@slideLeftRight]="isToggled">
+	<div class="aside" 
+		(mouseenter)="mouseEnter('div a')"
+		(mouseleave)="mouseLeave('div A')">
+		<div class="admin-wrapper">
+			<div>
+				<img src="/assets/favicons/apple-touch-icon.png" 
+					width="40" 
+					height="40" 
+					class="d-inline-block align-top">
+				<span>storeApp</span>
+			</div>
+			<button mat-icon-button
+				(click)="toggleLeft()">
 				<i class="fas fa-bars"></i>
 			</button>
 		</div>
-		<mat-nav-list>
-			<a mat-list-item routerLink="/">
-				Home
-				<i class="fas fa-home"></i>
-			</a>
-			<a mat-list-item routerLink="/admin">
-				Dashboard
-				<i class="fas fa-plus-square"></i>
-			</a>
-			<a mat-list-item routerLink="add-product">
-				Add product
-				<i class="fas fa-plus-square"></i>
-			</a>
-			<a mat-list-item routerLink="products-list">
-				Product list
-				<i class="fas fa-th-list"></i>
-			</a>
-			<a mat-list-item routerLink="orders">
-				Orders
-				<i class="fas fa-th-list"></i>
-			</a>
-			<a mat-list-item
-				(click)="logout()">
-				Logout
-			</a>
-		</mat-nav-list>
-	</ng-sidebar>
-
-	<!-- Page content -->
-	<div ng-sidebar-content>
-		<router-outlet></router-outlet>
+		<admin-sidenav></admin-sidenav>
 	</div>
-
-</ng-sidebar-container>
+	<div>
+		<admin-toolbar></admin-toolbar>
+		<div class="admin-routes" 
+			(window:resize)="onResize($event)" 
+			[ngStyle]="{'height': styleHeight}">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>

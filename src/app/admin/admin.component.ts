@@ -1,4 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
+import { trigger ,style, transition, animate, keyframes, query, stagger, state } from '@angular/animations';
+
 import { ProductsService } from '../services/products.service';
 // import { AdminService } from '../admin/admin.service';
 import { AdminService } from '@admin/admin.service';
@@ -11,116 +13,24 @@ import { AuthService } from '../services/auth.service';
 @Component({
 	selector: 'app-admin',
 	templateUrl: './admin.component.html',
-	styleUrls: ['./admin.component.less']
+	styleUrls: ['./admin.component.less'],
+	animations: [
+		trigger('slideLeftRight', [
+			state('in', style({ 'grid-template-columns': '100px auto' })),
+			state('out', style({ width: '*' })),
+			transition('in => out', animate('300ms ease-in-out')),
+			transition('out => in', animate('300ms ease-in-out'))
+		])
+	]
 })
 export class AdminComponent implements OnInit {
+
+	isToggled: string
 
 	public options = {
 		position: ["top", "right"],
 		timeOut: 5000,
 		lastOnBottom: true
-	}
-
-	private _opened: boolean = true;
-	private _modeNum: number = 0;
-	private _positionNum: number = 0;
-	private _dock: boolean = true;
-	private _closeOnClickOutside: boolean = false;
-	private _closeOnClickBackdrop: boolean = false;
-	private _showBackdrop: boolean = false;
-	private _animate: boolean = true;
-	private _trapFocus: boolean = true;
-	private _autoFocus: boolean = true;
-	private _keyClose: boolean = false;
-	private _autoCollapseHeight: number = null;
-	private _autoCollapseWidth: number = null;
-
-	private _MODES: Array<string> = ['push', 'over', 'slide'];
-	private _POSITIONS: Array<string> = ['left', 'right', 'top', 'bottom'];
-
-	private _toggleOpened(): void {
-		this._opened = !this._opened;
-	}
-
-	private _toggleMode(): void {
-		this._modeNum++;
-
-		if (this._modeNum === this._MODES.length) {
-			this._modeNum = 0;
-		}
-	}
-
-	private _toggleAutoCollapseHeight(): void {
-		this._autoCollapseHeight = this._autoCollapseHeight ? null : 500;
-	}
-
-	private _toggleAutoCollapseWidth(): void {
-		this._autoCollapseWidth = this._autoCollapseWidth ? null : 500;
-	}
-
-	private _togglePosition(): void {
-		this._positionNum++;
-
-		if (this._positionNum === this._POSITIONS.length) {
-			this._positionNum = 0;
-		}
-	}
-
-	private _toggleDock(): void {
-		this._dock = !this._dock;
-	}
-
-	private _toggleCloseOnClickOutside(): void {
-		this._closeOnClickOutside = !this._closeOnClickOutside;
-	}
-
-	private _toggleCloseOnClickBackdrop(): void {
-		this._closeOnClickBackdrop = !this._closeOnClickBackdrop;
-	}
-
-	private _toggleShowBackdrop(): void {
-		this._showBackdrop = !this._showBackdrop;
-	}
-
-	private _toggleAnimate(): void {
-		this._animate = !this._animate;
-	}
-
-	private _toggleTrapFocus(): void {
-		this._trapFocus = !this._trapFocus;
-	}
-
-	private _toggleAutoFocus(): void {
-		this._autoFocus = !this._autoFocus;
-	}
-
-	private _toggleKeyClose(): void {
-		this._keyClose = !this._keyClose;
-	}
-
-	private _onOpenStart(): void {
-		console.info('Sidebar opening');
-	}
-
-	private _onOpened(): void {
-		console.info('Sidebar opened');
-	}
-
-	private _onCloseStart(): void {
-		console.info('Sidebar closing');
-	}
-
-	private _onClosed(): void {
-		console.info('Sidebar closed');
-	}
-
-	@ViewChild('sidenav') sidenav: MatSidenav;
-
-	reason = '';
-
-	close(reason: string) {
-		this.reason = reason;
-		this.sidenav.close();
 	}
 
 	name: string;
@@ -134,17 +44,20 @@ export class AdminComponent implements OnInit {
 	selectedFiles: FileList;
 	currentUpload: Upload;
 
+	styleHeight: any
+
 	constructor(private productsService: ProductsService,
 				private adminservice: AdminService,
 				private authService: AuthService, ) { }
 
 	ngOnInit() {
-		// let timeoutId = setTimeout(() => {  
-		// 	this.loginDialog();
-		// }, 0);
-		// if (localStorage) {
-		// 	console.log(localStorage);
-		// } 
+		this.styleHeight = window.innerHeight - 110 + 'px'
+		console.log(window.innerHeight)
+	}
+
+	onResize(event:any) {
+		this.styleHeight = event.target.innerHeight - 110 + 'px'
+		console.log(event.target.innerHeight)
 	}
 
 	addProduct() {
@@ -179,8 +92,18 @@ export class AdminComponent implements OnInit {
 		this.adminservice.pushUpload(this.currentUpload);
 	}
 
-	logout() {
-		this.authService.signOut();
+	toggleLeft() {
+		console.log(this.isToggled)
+		this.isToggled = this.isToggled === 'in' ? 'out' : 'in'
+	}
+
+	mouseEnter(div : string) {
+		// this.isToggled =! this.isToggled
+		console.log("mouse enter : " + div);
+	}
+
+	mouseLeave(div : string) {
+		console.log('mouse leave :' + div);
 	}
 
 }
