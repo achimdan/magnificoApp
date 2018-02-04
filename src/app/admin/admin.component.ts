@@ -10,6 +10,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 
 import { AuthService } from '../services/auth.service';
 
+import { tween, styler, easing, transform } from 'popmotion';
+
 @Component({
 	selector: 'app-admin',
 	templateUrl: './admin.component.html',
@@ -48,7 +50,7 @@ export class AdminComponent implements OnInit {
 
 	constructor(private productsService: ProductsService,
 				private adminservice: AdminService,
-				private authService: AuthService, ) { }
+				private authService: AuthService) { }
 
 	ngOnInit() {
 		this.styleHeight = window.innerHeight - 110 + 'px'
@@ -92,9 +94,8 @@ export class AdminComponent implements OnInit {
 		this.adminservice.pushUpload(this.currentUpload);
 	}
 
-	toggleLeft() {
-		console.log(this.isToggled)
-		this.isToggled = this.isToggled === 'in' ? 'out' : 'in'
+	toggleLeft(value) {
+		this.isToggled = this.isToggled === 'in' ? 'out' : 'in'	  
 	}
 
 	mouseEnter(div : string) {

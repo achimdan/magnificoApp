@@ -3,6 +3,7 @@
 </simple-notifications>
 
 <div class="admin-container" 
+	#aside
 	[@slideLeftRight]="isToggled">
 	<div class="aside" id="aside"
 		(mouseenter)="mouseEnter('div a')"
@@ -16,7 +17,7 @@
 				<span>storeApp</span>
 			</div>
 			<button mat-icon-button
-				(click)="toggleLeft()">
+				(click)="toggleLeft(aside)">
 				<i class="fas fa-bars"></i>
 			</button>
 		</div>
