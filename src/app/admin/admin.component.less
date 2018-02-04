@@ -2,6 +2,11 @@
     display: grid;
     grid-template-columns: 260px auto;
 
+    #aside {
+        animation: slideToggle .5s ease-in-out forwards;
+        opacity: 0;
+    }
+
     .aside {
         background: #282c36;
         .admin-wrapper {
@@ -19,6 +24,10 @@
             }
         }
     }
+    #content {
+        animation: contentToggle .5s ease-in-out forwards;
+        opacity: 0;
+    }
     .admin-routes {
         background: white;
         padding: 20px;
@@ -29,4 +38,25 @@
 
 .toggled {
     grid-template-columns: 100px auto;
+}
+
+@keyframes slideToggle {
+    from {
+        transform: translateX(-300px);
+        opacity: 0;
+    }
+    to {
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+@keyframes contentToggle {
+    from {
+        transform: translateX(300px);
+        opacity: 0;
+    }
+    to {
+        transform: translateZ(0);
+        opacity: 1;
+    }
 }

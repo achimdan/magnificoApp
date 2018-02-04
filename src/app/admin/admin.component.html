@@ -4,7 +4,7 @@
 
 <div class="admin-container" 
 	[@slideLeftRight]="isToggled">
-	<div class="aside" 
+	<div class="aside" id="aside"
 		(mouseenter)="mouseEnter('div a')"
 		(mouseleave)="mouseLeave('div A')">
 		<div class="admin-wrapper">
@@ -22,7 +22,7 @@
 		</div>
 		<admin-sidenav></admin-sidenav>
 	</div>
-	<div>
+	<div id="content">
 		<admin-toolbar></admin-toolbar>
 		<div class="admin-routes" 
 			(window:resize)="onResize($event)" 
