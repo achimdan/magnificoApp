@@ -53,13 +53,11 @@ export class AdminComponent implements OnInit {
 				private authService: AuthService) { }
 
 	ngOnInit() {
-		this.styleHeight = window.innerHeight - 110 + 'px'
-		console.log(window.innerHeight)
+		this.styleHeight = window.innerHeight - 90 + 'px'
 	}
 
 	onResize(event:any) {
-		this.styleHeight = event.target.innerHeight - 110 + 'px'
-		console.log(event.target.innerHeight)
+		this.styleHeight = event.target.innerHeight - 90 + 'px'
 	}
 
 	addProduct() {
