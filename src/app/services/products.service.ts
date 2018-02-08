@@ -8,15 +8,26 @@ import { Product } from '../models/Product';
 export class ProductsService {
 
 	productsCollection: AngularFirestoreCollection<Product>;
-	products: Observable<Product[]>;
-	postProduct: any;
-	removeProduct: any;
+	items: Observable<Product[]>;
 
-	constructor(public af: AngularFirestore) {}
+	postProduct: any;
+	removeProduct: AngularFirestoreDocument<Product>;
+
+	constructor(public af: AngularFirestore) {
+		this.productsCollection = this.af.collection('items', ref => ref.orderBy('title','asc'));
+
+		this.items = this.productsCollection.snapshotChanges().map(changes => {
+			return changes.map(a => {
+				const data = a.payload.doc.data() as Product;
+				data.id = a.payload.doc.id;
+				return data;
+			});
+		});
+	}
 	
 	getProducts() {
-		this.products = this.af.collection('items').valueChanges();
-		return this.products;
+		this.items = this.af.collection('items').valueChanges();
+		return this.items;
 	}
 
 	addProduct(product) {
@@ -25,7 +36,8 @@ export class ProductsService {
 	}
 
 	deleteProduct(product) {
-		this.removeProduct = this.af.collection('items').doc(product).delete();
+		this.removeProduct = this.af.doc(`items/${product.id}`)
+		this.removeProduct.delete();
 		return this.removeProduct;
 	}
 

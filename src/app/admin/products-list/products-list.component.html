@@ -1,13 +1,3 @@
-<!-- <div class="row">
-	<div class="card col-md-3" *ngFor="let product of products">
-		<img class="card-img-top" src="{{product.img}}" alt="Card image cap">
-		<div class="card-body">
-			<h4 class="card-title">{{product.name}}</h4>
-			<p class="card-text">{{product.description}}</p>
-			<a href="#" class="btn btn-primary">Go somewhere</a>
-		</div>
-	</div>
-</div> -->
 <button mat-raised-button color="accent"
 	routerLink="/admin/add-product">
 	<!-- <i class="fas fa-plus-square"></i> -->
@@ -19,11 +9,18 @@
 <ul class="list-group product-list">
 	<li *ngFor="let product of products"
 		class="list-group-item d-flex justify-content-between align-items-center">
-		<img src="{{product.img}}"
-			class="product-img"
-			alt="">
+		<img src="{{product.img}}" class="product-img">
+		<span>
+			{{product.id}}
+		</span>
 		<span>
 			{{product.name}}
+		</span>
+		<span>
+			{{product.active}}
+		</span>
+		<span>
+			{{product.date | date:'fullDate'}}
 		</span>
 		<div>
 			<button class="btn btn-primary"

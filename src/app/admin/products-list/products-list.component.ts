@@ -4,7 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/take';
 
-import { ProductsService } from '../../services/products.service';
+import { AdminService } from '../admin.service';
 import { Product } from '../../models/Product';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as _ from 'lodash';
@@ -26,7 +26,7 @@ export class ProductsListComponent implements OnInit {
 	// lastKey = '';
 	// finished = false;
 
-	constructor(private productsService: ProductsService, public dialog: MatDialog) {	}
+	constructor(private adminService: AdminService, public dialog: MatDialog) {	}
 
 	editProduct(product): void {
 		let dialogRef = this.dialog.open(AdminProductDialog, {
@@ -43,15 +43,15 @@ export class ProductsListComponent implements OnInit {
 	
 	ngOnInit() {
 		// this.getProducts();
-		this.productsService.getProducts().subscribe(products => {
+		this.adminService.getProducts().subscribe(products => {
 			console.log(products);
 			this.products = products;
 		})
 	}
 
-	deleteProduct(product) {
-		// console.log(product);
-		this.productsService.deleteProduct(product.name);
+	deleteProduct(product: Product) {
+		console.log(product);
+		this.adminService.deleteProduct(product);
 	}
 
 	// onScroll() {
@@ -62,7 +62,7 @@ export class ProductsListComponent implements OnInit {
 	// private getProducts(key?) {
 	// 	if (this.finished) return;
 		
-	// 	this.productsService
+	// 	this.adminService
 	// 		.getProducts(this.batch + 1, this.lastKey)
 	// 		.do(products => {
 	// 			//problem

@@ -1,5 +1,8 @@
 export interface Product {
 	id?: string,
-	title?: string,
-	description?: string
+	name?: string,
+	description?: string,
+	date?: Date,
+	active?: boolean,
+	img?: string
 }

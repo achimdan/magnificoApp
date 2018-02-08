@@ -69,7 +69,7 @@ export class AdminComponent implements OnInit {
 			active: true,
 			img: this.img
 		}
-		this.adminservice.addProduct(prod);
+		this.adminservice.addProduct(prod,'');
 	}
 
 	detectFiles(event: any) {
@@ -89,7 +89,7 @@ export class AdminComponent implements OnInit {
 	uploadImage() {
 		let file = this.selectedFiles.item(0)
 		this.currentUpload = new Upload(file);
-		this.adminservice.pushUpload(this.currentUpload);
+		// this.adminservice.pushUpload(this.currentUpload);
 	}
 
 	toggleLeft(value) {
