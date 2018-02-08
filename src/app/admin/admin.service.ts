@@ -3,37 +3,41 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from "angularfire2/database";
 import * as firebase from 'firebase';
+import { Router } from '@angular/router';
 import { Product } from '../models/Product';
 import { firestore } from '../../../functions/node_modules/firebase-functions';
 import { Upload } from '../admin/upload';
 
+import { NotificationsService } from 'angular2-notifications';
+
 @Injectable()
 export class AdminService {
 
-	image: any;
-	postProduct: any;
+	image: any
+	postProduct: any
 
-	constructor(private af: AngularFirestore, private db: AngularFireDatabase) { }
+	constructor(private af: AngularFirestore, private db: AngularFireDatabase, private router: Router, private notification: NotificationsService) { }
 
-	private basePath: string = '/uploads';
-	// uploads: FirebaseListObservable<Upload[]>;
+	private basePath: string = '/uploads'
 
-	addProduct(product): Observable<any[]> {
-		// console.log(product);
-		product.img = this.image;
-		this.postProduct = this.af.collection('items').add(product);
-		return Observable.of(this.postProduct);
+	addProduct(product, img) {
+		this.postProduct = this.af.collection('items')
+			.add(product)
+			.then( () => {
+				this.successCall(product)
+				this.router.navigate(['admin/products-list']);
+			})
 	}
 
-	pushUpload(upload: Upload) {
+	saveProduct(upload: Upload, product: any) {
 
-		let storageRef = firebase.storage().ref();
-		let uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file);
+		let storageRef = firebase.storage().ref()
+		let uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file)
 		uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
 			(snapshot) => {
 				// upload in progress
 				upload.progress = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100;
-				console.log(upload.progress);
+				console.log(upload.progress)
 			},
 			(error) => {
 				// upload failed
@@ -41,17 +45,32 @@ export class AdminService {
 			},
 			() => {
 				// upload success
-				upload.url = uploadTask.snapshot.downloadURL;
-				upload.name = upload.file.name;
-				this.saveFileData(upload);
-				this.image = upload.url;
-				console.log('SUCCESS', upload);
+				upload.url = uploadTask.snapshot.downloadURL
+				upload.name = upload.file.name
+				product.img = upload.url
+				this.saveFileData(upload)
+				this.addProduct(product, this.image)
 			}
 		);
+		
+		return Observable.of(uploadTask)
 	}
 
 	private saveFileData(upload: Upload) {
-		this.db.list(`${this.basePath}/`).push(upload);
-		// this.af.collection('pictures').add(upload.file.name);
+		this.db.list(`${this.basePath}/`).push(upload)
+	}
+
+	private successCall(params) {
+		this.notification.success(
+			params.name,
+			params.date,
+			{
+				timeOut: 2000,
+				showProgressBar: true,
+				pauseOnHover: false,
+				clickToClose: false,
+				maxLength: 10
+			}
+		)
 	}
 }

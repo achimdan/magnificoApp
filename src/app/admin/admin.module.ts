@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { routing } from '../app.routing';
 
 //FORMS
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //COMPONENTS
 import { AdminComponent } from './admin.component';
@@ -41,6 +41,7 @@ import { AdminToolbarComponent } from './admin-toolbar/admin-toolbar.component';
 		CommonModule,
 		routing,
 		FormsModule,
+		ReactiveFormsModule,
 
 		MatSidenavModule,
 		MatProgressSpinnerModule,
