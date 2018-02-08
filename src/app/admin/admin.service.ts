@@ -24,7 +24,7 @@ export class AdminService {
 	
 	constructor(private af: AngularFirestore, private db: AngularFireDatabase, private router: Router, private notification: NotificationsService) {
 		
-		this.productsCollection = this.af.collection('items', ref => ref.orderBy('name','desc'));
+		this.productsCollection = this.af.collection('items', ref => ref.orderBy('date','desc'));
 
 		this.items = this.productsCollection.snapshotChanges().map(changes => {
 			return changes.map(a => {
