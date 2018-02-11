@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { trigger ,style, transition, animate, keyframes, query, stagger, state } from '@angular/animations';
+import { Observable } from 'rxjs/Observable';
 
 import { ProductsService } from '../services/products.service';
 // import { AdminService } from '../admin/admin.service';
@@ -28,25 +29,14 @@ import { tween, styler, easing, transform } from 'popmotion';
 export class AdminComponent implements OnInit {
 
 	isToggled: string
+	displayFromParent = true
+	styleHeight: any
 
 	public options = {
 		position: ["top", "right"],
 		timeOut: 5000,
 		lastOnBottom: true
 	}
-
-	name: string;
-	description: string;
-	price: number;
-	date: number;
-	active: boolean;
-	img: any;
-	url: string;
-
-	selectedFiles: FileList;
-	currentUpload: Upload;
-
-	styleHeight: any
 
 	constructor(private productsService: ProductsService,
 				private adminservice: AdminService,
@@ -60,49 +50,25 @@ export class AdminComponent implements OnInit {
 		this.styleHeight = event.target.innerHeight - 90 + 'px'
 	}
 
-	addProduct() {
-		const prod = {
-			name: this.name,
-			description: this.description,
-			price: this.price,
-			date: new Date(),
-			active: true,
-			img: this.img
-		}
-		this.adminservice.addProduct(prod,'');
-	}
 
-	detectFiles(event: any) {
-		if (event.target.files && event.target.files[0]) {
-			var reader = new FileReader();
-
-			reader.onload = (event: any) => {
-				this.url = event.target.result;
-			}
-
-			reader.readAsDataURL(event.target.files[0]);
-		}
-		this.selectedFiles = event.target.files;
-		console.log(this.selectedFiles);
-	}
-
-	uploadImage() {
-		let file = this.selectedFiles.item(0)
-		this.currentUpload = new Upload(file);
-		// this.adminservice.pushUpload(this.currentUpload);
-	}
-
-	toggleLeft(value) {
-		this.isToggled = this.isToggled === 'in' ? 'out' : 'in'	  
+	toggleLeft(event) {
+		this.isToggled = this.isToggled === 'in' ? 'out' : 'in'
+		const arr = Observable.of(this.isToggled)
+		.subscribe((map) => {
+			console.log(map)
+		})
+		this.displayFromParent = !this.displayFromParent
 	}
 
 	mouseEnter(div : string) {
 		// this.isToggled =! this.isToggled
-		console.log("mouse enter : " + div);
+		// this.isToggled = this.isToggled === 'in' ? 'out' : 'in'
+		// console.log("mouse enter : " + div);
 	}
-
+	
 	mouseLeave(div : string) {
-		console.log('mouse leave :' + div);
+		// this.isToggled = this.isToggled === 'in' ? 'out' : 'in'
+		// console.log('mouse leave :' + div);
 	}
 
 }

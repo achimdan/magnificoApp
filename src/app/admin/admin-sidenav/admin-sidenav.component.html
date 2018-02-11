@@ -1,21 +1,20 @@
-<div>
-	<div class="admin-nav">
-		<button mat-button 
-			*ngFor="let button of navigation"
-			class="nav-button"
-			routerLink="{{button.route}}">
-			<div class="grid-button">
-				<i class="fas fa-home"></i>
-				<span>{{button.name}}</span>
-			</div>
-		</button>
-		<button mat-button 
-			(click)="logout()"
-			class="nav-button">
-			<div class="grid-button">
-				<i class="fas fa-home"></i>
-				<span>Log out</span>
-			</div>
-		</button>
-	</div>
+<div class="admin-nav">
+	<button mat-button 
+		*ngFor="let button of navigation"
+		class="nav-button"
+		routerLink="{{button.route}}">
+		<div class="grid-button">
+			<i [class]="button.icon"></i>
+			<span *ngIf="displayFromParent">{{button.name}}</span>
+		</div>
+	</button>
+	<button mat-button 
+		(click)="logout()"
+		class="nav-button">
+		<div class="grid-button">
+			<i class="fas fa-sign-out-alt"></i>
+			<span *ngIf="displayFromParent">Log out</span>
+		</div>
+	</button>
 </div>
+
