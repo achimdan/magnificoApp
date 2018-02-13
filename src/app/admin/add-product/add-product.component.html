@@ -32,13 +32,13 @@
 						formControlName="description">
 				</textarea>
 			</div>
-			<div class="form-check">
+			<!-- <div class="form-check">
 				<label class="form-check-label">
 					<input type="checkbox"
 						class="form-check-input">
 						Check me out
 				</label>
-			</div>
+			</div> -->
 
 			<div *ngIf="currentUpload">
 				<div class="progress">
@@ -50,7 +50,12 @@
 			</div>
 
 			<label>
-				<input name="file" type="file" (change)="onFileChange($event)">
+				<input style="display: none" 
+					name="file" 
+					type="file" 
+					(change)="onFileChange($event)"
+					#fileInput>
+				<button type="button" (click)="fileInput.click()" class="btn btn-primary">Pick file</button>
    				<input type="hidden" name="fileHidden" formControlName="img"/>
 			</label>
 
