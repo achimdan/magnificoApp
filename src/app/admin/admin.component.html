@@ -14,14 +14,14 @@
 					width="40" 
 					height="40" 
 					class="d-inline-block align-top">
-				<span>storeApp</span>
+				<span *ngIf="displayFromParent">storeApp</span>
 			</div>
 			<button mat-icon-button
-				(click)="toggleLeft(aside)">
+				(click)="toggleLeft($event)">
 				<i class="fas fa-bars"></i>
 			</button>
 		</div>
-		<admin-sidenav></admin-sidenav>
+		<admin-sidenav [displayFromParent]="displayFromParent"></admin-sidenav>
 	</div>
 	<div id="content">
 		<admin-toolbar></admin-toolbar>

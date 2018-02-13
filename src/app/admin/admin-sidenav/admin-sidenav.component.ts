@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { AuthService } from '../../services/auth.service';
 	styleUrls: ['./admin-sidenav.component.less']
 })
 export class AdminSidenavComponent implements OnInit {
+
+	@Input() displayFromParent = true
 	navigation: Array<{}>
 
 	constructor(private authService: AuthService,) { }
@@ -16,25 +18,25 @@ export class AdminSidenavComponent implements OnInit {
 			{
 				id: 1,
 				name: 'Home',
+				icon: 'fas fa-home',
 				route: ''
 			},{
 				id: 2,
 				name: 'Dashboard',
+				icon: 'fas fa-chart-pie',
 				route: '/admin'
 			},{
 				id: 2,
 				name: 'Product list',
+				icon: 'fas fa-cart-plus',
 				route: 'products-list'
 			},{
 				id: 3,
 				name: 'Orders',
+				icon: 'fas fa-money-bill-alt',
 				route: 'orders'
 			}
 		];
-	}
-
-	toggleLeft() {
-		console.log('toggled')
 	}
 
 	logout() {
