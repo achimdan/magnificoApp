@@ -6,7 +6,7 @@ import { tap, map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 import { LoginComponent } from '../admin/login/login.component';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -16,6 +16,7 @@ export class AuthGuard implements CanActivate {
 	loginDialog(): void {
 		let dialogRef = this.dialog.open(LoginComponent, {
 			width: '350px',
+			disableClose: true
 		});
 
 		// dialogRef.disableClose = true;
@@ -36,9 +37,7 @@ export class AuthGuard implements CanActivate {
 		});
 	}
 
-	canActivate(
-		next: ActivatedRouteSnapshot,
-		state: RouterStateSnapshot): Observable<boolean> {
+	canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
 
 		return this.auth.user$.pipe(
 			take(1),

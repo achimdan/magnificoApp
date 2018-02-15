@@ -1,5 +1,8 @@
 <!-- <h2 mat-dialog-title>Login</h2> -->
 <mat-dialog-content>
+	<button mat-icon-button (click)="closeDialog()" class="close-modal">
+		<i class="fas fa-times fa-lg"></i>
+	</button>
 	<div class="login-container">
 		<!-- <form> -->
 			<div class="form-group">
@@ -21,14 +24,6 @@
 					class="form-text text-muted">
 					We'll never share your password with anyone else.
 				</small>
-			</div>
-
-			<div class="form-check">
-				<label class="form-check-label">
-					<input type="checkbox"
-						class="form-check-input">
-						Remember me
-				</label>
 			</div>
 			<div class="form-group">
 				<button class="btn btn-primary btn-login"

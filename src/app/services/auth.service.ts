@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../models/user';
 
+import { MatDialog } from '@angular/material';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,8 @@ export class AuthService {
 
 	constructor(private afAuth: AngularFireAuth,
 				private afs: AngularFirestore,
-				private router: Router) {
+				private router: Router,
+				private dialog: MatDialog) {
 		//// Get auth data, then get firestore user document || null
 		this.user$ = this.afAuth.authState
 			.switchMap(user => {
@@ -37,7 +39,8 @@ export class AuthService {
 	}
 	facebookLogin() {
 		const provider = new firebase.auth.FacebookAuthProvider()
-		return this.oAuthLogin(provider);
+		
+		return this.oAuthLogin(provider) && Observable.of(provider);
 	}
 	private oAuthLogin(provider) {
 		return this.afAuth.auth.signInWithPopup(provider)
@@ -61,7 +64,10 @@ export class AuthService {
 				subscriber: true
 			}
 		}
-		return userRef.set(data, { merge: true })
+		return userRef.set(data, { merge: true }).then(() => {
+			this.dialog.closeAll();
+			this.router.navigate(['/admin']);
+		})
 	}
 
 	///// Role-based Authorization //////
