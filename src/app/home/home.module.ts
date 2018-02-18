@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 //ROUTING
 import { routing } from '../app.routing';
 
@@ -26,6 +29,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
 
 //SWIPER
 import { SwiperModule } from 'ngx-swiper-wrapper';
@@ -43,6 +50,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
 @NgModule({
 	imports: [
 		CommonModule,
+		FormsModule,
+		ReactiveFormsModule,
+
 		routing,
 
 		MatDialogModule,
@@ -53,6 +63,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
 		MatSidenavModule,
 		MatListModule,
 		MatCheckboxModule,
+		MatStepperModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatSelectModule,
 
 		SwiperModule
 	],

@@ -1,18 +1,103 @@
-<p>
-  cart works!
-</p>
+<div class="cart-wrapper">
 
-<ul>
-	<li *ngFor="let product of products">
-		<img style="width:60px" src="{{product.img}}" alt="">
-		<span>
-			{{product.name}}
-		</span>
-		<span>
-			{{product.description}}
-		</span>
-		<span>
-			{{product.price}}
-		</span>
-	</li>
-</ul>
+	<h3 style="padding: 15px">Checkout</h3>
+	
+	<mat-selection-list class="cart-list">
+		<mat-nav-list *ngFor="let product of products">
+			<mat-list-item>
+				<div class="list-item">
+					<img style="width:60px"
+						src="{{product.img}}"
+						alt="">
+					<span>
+						{{product.name}}
+					</span>
+					<span>
+						{{product.description}}
+					</span>
+					<span>
+						{{product.price}} Ron
+					</span>
+				</div>
+			</mat-list-item>
+		</mat-nav-list>
+	</mat-selection-list>
+	
+	<mat-horizontal-stepper [linear]="isLinear" class="stepper-group">
+		<mat-step [stepControl]="firstFormGroup">
+			<form [formGroup]="firstFormGroup">
+				<ng-template matStepLabel>CUSTTOMER DETAILS</ng-template>
+				<div class="stepper-zone">
+					<mat-form-field class="stepper-field">
+						<input matInput
+							   placeholder="First name"
+							   formControlName="firstName"
+							   required>
+					</mat-form-field>
+					<mat-form-field class="stepper-field">
+						<input matInput
+							   placeholder="Last name"
+							   formControlName="lastName"
+							   required>
+					</mat-form-field>
+					<mat-form-field class="stepper-field">
+						<input matInput
+							   placeholder="Telephone"
+							   formControlName="telephone"
+							   required>
+					</mat-form-field>
+					<mat-form-field class="stepper-field">
+						<mat-select placeholder="Town" formControlName="town">
+							<mat-option *ngFor="let town of towns" [value]="town.value">
+								{{ town.viewValue }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+					<mat-form-field class="stepper-field">
+						<input matInput
+							   placeholder="Adress"
+							   formControlName="adress"
+							   required>
+					</mat-form-field>
+				</div>
+				<div>
+					<button mat-button
+						matStepperNext>
+						Next
+					</button>
+				</div>
+			</form>
+		</mat-step>
+		<mat-step [stepControl]="secondFormGroup">
+			<form [formGroup]="secondFormGroup">
+				<ng-template matStepLabel>SHIPPING INFO</ng-template>
+				<mat-form-field>
+					<input matInput
+						   placeholder="Address"
+						   formControlName="secondCtrl"
+						   required>
+				</mat-form-field>
+				<div>
+					<button mat-button
+						matStepperPrevious>
+						Back
+					</button>
+					<button mat-button
+						matStepperNext>
+						Next
+					</button>
+				</div>
+			</form>
+		</mat-step>
+		<mat-step>
+			<ng-template matStepLabel>PAYMENT</ng-template>
+			You are now done.
+			<div>
+				<button mat-button
+					matStepperPrevious>
+					Back
+				</button>
+			</div>
+		</mat-step>
+	</mat-horizontal-stepper>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder ,FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { HomeService } from '../home.service';
 import { Cart } from '../../models/cart-products';
@@ -11,8 +12,18 @@ import { Cart } from '../../models/cart-products';
 export class CartComponent implements OnInit {
 
 	products: Array<{}>;
+	isLinear = true;
+	firstFormGroup: FormGroup;
+	secondFormGroup: FormGroup;
+	
+	towns = [
+		{value: '1', viewValue: 'Alba'},
+		{value: '2', viewValue: 'Cluj-Napoca'},
+		{value: '3', viewValue: 'Bucuresti'}
+	  
+	];
 
-	constructor(private homeService: HomeService) { }
+	constructor(private homeService: HomeService, private _formBuilder: FormBuilder) { }
 
 	ngOnInit() {
 		// this.homeService.getCartProducts().subscribe(cart => {
@@ -23,6 +34,18 @@ export class CartComponent implements OnInit {
 		this.homeService.currentProduct.subscribe(products => {
 			this.products = products
 		})
+
+		this.firstFormGroup = this._formBuilder.group({
+			firstName: ['', Validators.required],
+			lastName: ['', Validators.required],
+			telephone: ['', Validators.required],
+			town: ['', Validators.required],
+			adress: ['', Validators.required]
+		});
+
+		this.secondFormGroup = this._formBuilder.group({
+			secondCtrl: ['', Validators.required]
+		});
 	}
 
 }
