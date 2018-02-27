@@ -26,9 +26,20 @@ export class HomeService {
 	}
 
 	addOrder(product: any) {
-		this.cartArray.push(product)
-		this.productToCart.next(this.cartArray)
-		localStorage.setItem('cart', JSON.stringify(this.cartArray))
+
+		let isDuppie;
+		this.cartArray.forEach(element => {
+			console.log(element)
+			if (product.name === element.name) {
+				isDuppie = false
+			}
+		})
+		if (isDuppie !== false) {
+			this.cartArray.push(product)
+			this.productToCart.next(this.cartArray)
+			localStorage.setItem('cart', JSON.stringify(this.cartArray))
+		}
+
 	}
 
 	// FOR FIREBASE
