@@ -11,7 +11,7 @@ import { Cart } from '../../models/cart-products';
 })
 export class CartComponent implements OnInit {
 
-	products: Array<{}>;
+	products: Cart[];
 	isLinear = true;
 	firstFormGroup: FormGroup;
 	secondFormGroup: FormGroup;
@@ -33,6 +33,7 @@ export class CartComponent implements OnInit {
 
 		this.homeService.currentProduct.subscribe(products => {
 			this.products = products
+			console.log('products',products)
 		})
 
 		this.firstFormGroup = this._formBuilder.group({

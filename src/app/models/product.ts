@@ -4,5 +4,6 @@ export interface Product {
 	description?: string,
 	date?: Date,
 	active?: boolean,
-	img?: string
+	img?: string,
+	photo: string
 }

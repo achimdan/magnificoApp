@@ -11,7 +11,7 @@ import { Cart } from '../models/cart-products';
 export class HomeService {
 
 	cart: Observable<Cart[]>
-	cartArray: Array<{}> = JSON.parse(localStorage.getItem('cart')) || []
+	cartArray: any = JSON.parse(localStorage.getItem('cart')) || []
 
 	user = JSON.parse(localStorage.getItem('cart')) || 0
 

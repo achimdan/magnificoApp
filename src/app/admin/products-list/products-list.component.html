@@ -11,6 +11,9 @@
 		class="list-group-item d-flex justify-content-between align-items-center">
 		<img src="{{product.img}}" class="product-img">
 		<span>
+			{{product.price}} Ron
+		</span>
+		<span>
 			{{product.id}}
 		</span>
 		<span>
@@ -22,6 +25,10 @@
 		<span>
 			{{product.date | date:'fullDate'}}
 		</span>
+		<!-- <span *ngIf="product.photo">
+			{{product.photo.path}}
+			<img src="{{product.photo.path}" class="product-img">
+		</span> -->
 		<div>
 			<button class="btn btn-primary"
 				(click)="editProduct(product)">
